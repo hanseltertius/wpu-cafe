@@ -48,12 +48,6 @@ const Select = (props: IPropTypes) => {
     }
   };
 
-  const getErrorMessage = (label?: string) => {
-    return label && label.length > 0
-      ? `${label} must not be empty`
-      : 'Select box value must not be empty';
-  };
-
   return (
     <div className={`${styles['select-wrapper']}`}>
       {label && <label htmlFor={id}>{label}</label>}
