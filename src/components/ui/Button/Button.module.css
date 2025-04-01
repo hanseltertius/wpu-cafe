@@ -1,12 +1,29 @@
+/** General Button */
+.button,
+.button-icon {
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/** Non-Icon Button */
 .button {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 12px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
+/** Icon Button */
+.button-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.button-icon.circular {
+  border-radius: 36px;
+}
+
+/** Button Color */
 .button-primary {
   background-color: #ffb22c;
   border: 1px solid #ffb22c;
@@ -22,5 +39,11 @@
 .button-danger {
   background-color: red;
   border: 1px solid red;
+  color: #fff;
+}
+
+.button-succeed {
+  background-color: green;
+  border: 1px solid green;
   color: #fff;
 }
