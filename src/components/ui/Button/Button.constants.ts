@@ -6,6 +6,8 @@ enum ButtonIconType {
   DELETE = 'delete',
   COMPLETE = 'complete',
   REDIRECT = 'redirect',
+  REVIEW = 'review',
+  CART = 'cart',
 }
 
 enum ButtonColor {

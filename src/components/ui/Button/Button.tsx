@@ -1,10 +1,12 @@
 import {
   FaCheck,
+  FaCommentAlt,
   FaEdit,
   FaExternalLinkAlt,
   FaMinus,
   FaPlus,
   FaSearch,
+  FaShoppingCart,
   FaTrashAlt,
 } from 'react-icons/fa';
 import { ButtonColor, ButtonIconType } from './Button.constants';
@@ -57,6 +59,10 @@ const Button = (props: IPropTypes) => {
         return <FaCheck />;
       case ButtonIconType.REDIRECT:
         return <FaExternalLinkAlt />;
+      case ButtonIconType.CART:
+        return <FaShoppingCart />;
+      case ButtonIconType.REVIEW:
+        return <FaCommentAlt />;
       default:
         return <FaSearch />;
     }
