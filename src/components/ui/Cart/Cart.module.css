@@ -1,0 +1,29 @@
+.container {
+  padding: 8px;
+  width: 30%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .content-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .option-container {
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .small {
+    width: 30px;
+    height: 30px;
+  }
+}
