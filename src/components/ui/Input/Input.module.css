@@ -12,3 +12,10 @@
 .mandatory-border {
   border: 2px solid red;
 }
+
+.input-content-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
