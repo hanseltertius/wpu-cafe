@@ -4,17 +4,16 @@ import Button from '../Button';
 import { ButtonColor, ButtonIconType } from '../Button/Button.constants';
 
 interface IPropTypes {
-  cart?: ICart;
+  cart: ICart;
 }
 
 const Cart = (props: IPropTypes) => {
-  // TODO : note itu conditional rendering
   const { cart } = props;
 
   return (
     <div className={styles.container}>
       <div className={styles['content-container']}>
-        <h3>Americano</h3>
+        <h3>{cart.name}</h3>
         <div className={styles['option-container']}>
           <Button
             id="minus"
@@ -24,7 +23,7 @@ const Cart = (props: IPropTypes) => {
             color={ButtonColor.DANGER}
             className={styles.small}
           />
-          <strong>1</strong>
+          <strong>{cart.quantity}</strong>
           <Button
             id="plus"
             isIcon
@@ -35,12 +34,9 @@ const Cart = (props: IPropTypes) => {
           />
         </div>
       </div>
-      <div className={styles.note}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-        laudantium ratione consequuntur voluptatem vitae aspernatur asperiores
-        perferendis repudiandae quasi, odio ullam sit, provident optio
-        necessitatibus quidem enim ut, aliquid corporis.
-      </div>
+      {cart.notes && cart.notes?.length > 0 && (
+        <div className={styles.note}>{cart.notes}</div>
+      )}
       <div className={styles['content-container']}>
         <div></div>
         <div className={styles['option-container']}>
