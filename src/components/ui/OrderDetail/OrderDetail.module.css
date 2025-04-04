@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: lightgray;
+  padding: 16px;
+  border-radius: 4px;
+
+  .info-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    /* TODO : media query */
+  }
+}
