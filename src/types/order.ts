@@ -1,10 +1,9 @@
-import { OrderStatus } from '../constants/orderStatus';
 import { ICart } from './cart';
 
 interface IOrder {
   id: string;
   customer_name: string;
-  table_number: string;
+  table_number: number;
   cart: ICart[];
   status: 'PENDING' | 'PROCESSING' | 'COMPLETE';
   total: number;
