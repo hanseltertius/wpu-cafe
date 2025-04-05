@@ -2,8 +2,8 @@ import { FormEvent } from 'react';
 import Button from '../../ui/Button';
 import Input from '../../ui/Input';
 import Select from '../../ui/Select';
-import { ratings } from './ReviewForm.constants';
-import styles from './ReviewForm.module.css';
+import { ratings } from './AddToReview.constants';
+import styles from './AddToReview.module.css';
 import { IReview } from '../../../types/review';
 
 interface IPropTypes {
@@ -11,7 +11,7 @@ interface IPropTypes {
   menuItemId: string;
 }
 
-const ReviewForm = (props: IPropTypes) => {
+const AddToReview = (props: IPropTypes) => {
   const { id, menuItemId } = props;
 
   /**
@@ -85,4 +85,4 @@ const ReviewForm = (props: IPropTypes) => {
   );
 };
 
-export default ReviewForm;
+export default AddToReview;
