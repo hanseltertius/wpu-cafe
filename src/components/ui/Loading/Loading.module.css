@@ -7,6 +7,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 9999;
+}
+
+.transparent {
+  background-color: transparent;
 }
