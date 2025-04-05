@@ -1,18 +1,19 @@
 import styles from './Input.module.css';
-import useInputValue from '../../../hooks/useInputValue';
 import Error from '../Error';
 import Button from '../Button';
+import { ChangeEvent } from 'react';
 
 interface IPropTypes {
   id: string;
   label?: string;
   name?: string;
   type?: string;
+  value?: string;
   placeholder?: string;
   className?: string;
   isRequired?: boolean;
   isSearch?: boolean;
-  callback?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   isRenderSearch?: boolean;
 }
 
@@ -21,18 +22,17 @@ const Input = (props: IPropTypes) => {
     id,
     name,
     label,
+    value = '',
     placeholder,
     className,
     type = 'text',
     isRequired = false,
-    callback = () => {},
     isRenderSearch = false,
+    onChange = () => {},
   } = props;
 
-  const { inputValue, setInputValue } = useInputValue(callback);
-
   const inputClassName = `${styles.input} ${
-    isRequired && inputValue.length === 0 ? styles['mandatory-border'] : ''
+    isRequired && value.length === 0 ? styles['mandatory-border'] : ''
   } ${className}`;
 
   const getErrorMessage = (label?: string) => {
@@ -51,12 +51,12 @@ const Input = (props: IPropTypes) => {
           id={id}
           className={inputClassName}
           name={name}
-          value={inputValue}
-          onChange={setInputValue}
+          value={value}
+          onChange={onChange}
         ></input>
         {isRenderSearch && <Button id="search" isIcon isCircularIcon />}
       </div>
-      {isRequired && inputValue.length === 0 && (
+      {isRequired && value.length === 0 && (
         <Error message={getErrorMessage(label)} />
       )}
     </div>

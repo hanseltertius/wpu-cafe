@@ -1,20 +1,19 @@
-import { useState } from 'react';
+import { ChangeEvent, useCallback } from 'react';
+import useCallbackState from './useCallbackState';
 
-const useInputValue = (callback?: () => void) => {
-  const [inputValue, setInputValue] = useState('');
+const useInputValue = (initialValue: string) => {
+  const [inputValue, setInputValueRaw] = useCallbackState<string>(initialValue);
 
-  const onValueChanged = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    setInputValue(e.target.value);
-    if (!!callback) callback();
-  };
+  const setInputValue = useCallback(
+    (e: ChangeEvent<HTMLInputElement>, callback?: (val: string) => void) => {
+      setInputValueRaw(e.target.value, callback);
+    },
+    [setInputValueRaw],
+  );
 
   return {
     inputValue,
-    setInputValue: onValueChanged,
+    setInputValue,
   };
 };
 
