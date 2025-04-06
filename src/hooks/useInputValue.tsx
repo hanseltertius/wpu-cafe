@@ -14,6 +14,7 @@ const useInputValue = (initialValue: string) => {
   return {
     inputValue,
     setInputValue,
+    setInputValueRaw,
   };
 };
 
