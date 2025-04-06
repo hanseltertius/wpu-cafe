@@ -18,6 +18,7 @@ const useSelectBoxValue = (initialValue: string) => {
   return {
     selectBoxValue,
     setSelectBoxValue,
+    setSelectBoxValueRaw,
   };
 };
 
