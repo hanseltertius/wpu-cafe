@@ -26,8 +26,6 @@ const OrderDetail = (props: IPropTypes) => {
     { id: 'order-total', label: 'Total', text: String(orderItem.total) },
   ];
 
-  // TODO : display grid in the order detail
-
   /**
    * Container : bakal pake grid, dimana kita bisa display 3 (untuk web), 2 (untuk tablet) 1 (untuk mobile)
    * di dalam container itu ada label component (dimana kita itu bisa pake title)
@@ -40,15 +38,16 @@ const OrderDetail = (props: IPropTypes) => {
     <div id={id} className={styles.container}>
       <div className={styles['info-container']}>
         {informations.map((info) => {
-          return <Text id={info.id} label={info.label} text={info.text} />;
+          return (
+            <Text id={info.id} label={info.label}>
+              <strong>{info.text}</strong>
+            </Text>
+          );
         })}
       </div>
-      <Text
-        id="last-update"
-        label="Last Update: "
-        text={updatedAt}
-        isHorizontalWrapper
-      />
+      <Text id="last-update" label="Last Update: " isHorizontalWrapper>
+        {updatedAt}
+      </Text>
     </div>
   );
 };
