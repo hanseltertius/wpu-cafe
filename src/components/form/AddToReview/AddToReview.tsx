@@ -5,6 +5,8 @@ import Select from '../../ui/Select';
 import { ratings } from './AddToReview.constants';
 import styles from './AddToReview.module.css';
 import { IReview } from '../../../types/review';
+import useSelectBoxValue from '../../../hooks/useSelectBoxValue';
+import useInputValue from '../../../hooks/useInputValue';
 
 interface IPropTypes {
   id: string;
@@ -48,7 +50,7 @@ const AddToReview = (props: IPropTypes) => {
     const reviewer_name = form.reviewerName.value as string;
     if (!reviewer_name) return;
 
-    const rating = form.rating.value as number;
+    const rating = parseInt(form.rating.value);
     const comment = form.comment.value as string;
 
     const payload: IReview = {
@@ -63,6 +65,11 @@ const AddToReview = (props: IPropTypes) => {
     console.log('payload : ', payload);
   };
 
+  const reviewerName = useInputValue('');
+  const comment = useInputValue('');
+
+  const rating = useSelectBoxValue('');
+
   // sementara pake select dulu, baru pake stars
   return (
     <form id={id} className={styles.form} onSubmit={handleReview}>
@@ -71,12 +78,22 @@ const AddToReview = (props: IPropTypes) => {
         label="Reviewer Name"
         placeholder="Reviewer Name"
         isRequired
+        value={reviewerName.inputValue}
+        onChange={reviewerName.setInputValue}
       />
-      <Select id="rating" label="Rating" options={ratings} />
+      <Select
+        id="rating"
+        label="Rating"
+        options={ratings}
+        value={rating.selectBoxValue}
+        onChange={rating.setSelectBoxValue}
+      />
       <Input
         id="comment"
         label="Comment"
         placeholder="Add a comment (optional)"
+        value={comment.inputValue}
+        onChange={comment.setInputValue}
       />
       <Button id="submit" type="submit">
         Submit a review
