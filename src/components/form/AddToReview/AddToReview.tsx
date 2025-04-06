@@ -73,31 +73,35 @@ const AddToReview = (props: IPropTypes) => {
   // sementara pake select dulu, baru pake stars
   return (
     <form id={id} className={styles.form} onSubmit={handleReview}>
-      <Input
-        id="reviewerName"
-        label="Reviewer Name"
-        placeholder="Reviewer Name"
-        isRequired
-        value={reviewerName.inputValue}
-        onChange={reviewerName.setInputValue}
-      />
-      <Select
-        id="rating"
-        label="Rating"
-        options={ratings}
-        value={rating.selectBoxValue}
-        onChange={rating.setSelectBoxValue}
-      />
-      <Input
-        id="comment"
-        label="Comment"
-        placeholder="Add a comment (optional)"
-        value={comment.inputValue}
-        onChange={comment.setInputValue}
-      />
-      <Button id="submit" type="submit">
-        Submit a review
-      </Button>
+      <div className={styles['form-content']}>
+        <Input
+          id="reviewerName"
+          label="Reviewer Name"
+          placeholder="Reviewer Name"
+          isRequired
+          value={reviewerName.inputValue}
+          onChange={reviewerName.setInputValue}
+        />
+        <Select
+          id="rating"
+          label="Rating"
+          options={ratings}
+          value={rating.selectBoxValue}
+          onChange={rating.setSelectBoxValue}
+        />
+        <Input
+          id="comment"
+          label="Comment"
+          placeholder="Add a comment (optional)"
+          value={comment.inputValue}
+          onChange={comment.setInputValue}
+        />
+      </div>
+      <div className={styles['form-footer']}>
+        <Button id="submit" type="submit">
+          Submit a review
+        </Button>
+      </div>
     </form>
   );
 };

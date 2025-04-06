@@ -94,63 +94,48 @@ const AddToCart = (prop: IPropTypes) => {
 
   return (
     <form id={id} className={styles.form} onSubmit={handleAddToCart}>
-      <Text id="menuItem">{name}</Text>
-
-      {/* <Input
-        id="customerName"
-        label="Customer Name"
-        placeholder="Enter your Name"
-        value={customerName.inputValue}
-        onChange={customerName.setInputValue}
-        isRequired
-      />
-
-      <Select
-        id="tableNumber"
-        label="Table Number"
-        value={tableNumber.selectBoxValue}
-        onChange={tableNumber.setSelectBoxValue}
-        options={tableNumbers}
-      /> */}
-
-      <div className={styles['quantity-container']}>
+      <div className={styles['form-content']}>
         <Text id="quantityTitle">Quantity</Text>
-        <Button
-          id="quantity-minus"
-          isIcon
-          onClick={subtractQuantity}
-          iconType={ButtonIconType.MINUS}
-          color={ButtonColor.DANGER}
-          className={styles.small}
-        />
+        <div className={styles['quantity-container']}>
+          <Button
+            id="quantity-minus"
+            isIcon
+            onClick={subtractQuantity}
+            iconType={ButtonIconType.MINUS}
+            color={ButtonColor.DANGER}
+            className={styles.small}
+          />
+          <Input
+            id="quantity"
+            type="number"
+            value={quantity.inputValue}
+            onChange={setQuantity}
+          />
+          <Button
+            id="quantity-plus"
+            isIcon
+            onClick={addQuantity}
+            iconType={ButtonIconType.PLUS}
+            color={ButtonColor.SUCCEED}
+            className={styles.small}
+          />
+        </div>
+
         <Input
-          id="quantity"
-          type="number"
-          value={quantity.inputValue}
-          onChange={setQuantity}
-        />
-        <Button
-          id="quantity-plus"
-          isIcon
-          onClick={addQuantity}
-          iconType={ButtonIconType.PLUS}
-          color={ButtonColor.SUCCEED}
-          className={styles.small}
+          id="notes"
+          label="Notes"
+          placeholder="Add a note (optional)"
+          value={notes.inputValue}
+          onChange={notes.setInputValue}
+          isRequired
         />
       </div>
 
-      <Input
-        id="notes"
-        label="Notes"
-        placeholder="Add a note (optional)"
-        value={notes.inputValue}
-        onChange={notes.setInputValue}
-        isRequired
-      />
-
-      <Button id="submit" type="submit">
-        Add to Cart
-      </Button>
+      <div className={styles['form-footer']}>
+        <Button id="submit" type="submit">
+          Add to Cart
+        </Button>
+      </div>
     </form>
   );
 };

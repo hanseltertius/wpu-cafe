@@ -47,54 +47,63 @@ const CustomerInfo = (props: IPropTypes) => {
     if (cartList.length === 0) return;
   };
 
+  // TODO : form-content
+  // TODO : form-footer
+  // TODO : sebisa mungkin itu customer info nya bisa di handle di popup maupun di bagian component
+
   return (
     <form id={id} className={styles.form} onSubmit={handleCustomerInfo}>
-      <div className={styles['customer-info']}>
-        <Input
-          id="customerName"
-          label="Customer Name"
-          placeholder="Enter your Name"
-          value={customerName}
-          onChange={onCustomerNameChange}
-          isRequired
-        />
+      <div className={styles['form-content']}>
+        <div className={styles['customer-info']}>
+          <Input
+            id="customerName"
+            label="Customer Name"
+            placeholder="Enter your Name"
+            value={customerName}
+            onChange={onCustomerNameChange}
+            isRequired
+          />
 
-        <Select
-          id="tableNumber"
-          label="Table Number"
-          value={tableNumber}
-          onChange={onTableNumberChange}
-          options={tableNumbers}
-        />
-      </div>
-      <div className={styles['cart-scroll-wrapper']}>
-        <div className={styles['cart-container']}>
-          {cartList.length > 0 ? (
-            cartList.map((cart: ICart, index: number) => (
-              <div
-                className={
-                  index < cartList.length - 1
-                    ? styles['cart-item-with-separator']
-                    : ''
-                }
-              >
-                <Cart
-                  cart={cart}
-                  handleMinusButton={handleMinusButton}
-                  handlePlusButton={handlePlusButton}
-                  handleEditButton={handleEditButton}
-                  handleDeleteButton={handleDeleteButton}
-                />
-              </div>
-            ))
-          ) : (
-            <p>Your cart is empty</p>
-          )}
+          <Select
+            id="tableNumber"
+            label="Table Number"
+            value={tableNumber}
+            onChange={onTableNumberChange}
+            options={tableNumbers}
+          />
+        </div>
+        <div className={styles['cart-scroll-wrapper']}>
+          <div className={styles['cart-container']}>
+            {cartList.length > 0 ? (
+              cartList.map((cart: ICart, index: number) => (
+                <div
+                  key={cart.id}
+                  className={
+                    index < cartList.length - 1
+                      ? styles['cart-item-with-separator']
+                      : ''
+                  }
+                >
+                  <Cart
+                    cart={cart}
+                    handleMinusButton={handleMinusButton}
+                    handlePlusButton={handlePlusButton}
+                    handleEditButton={handleEditButton}
+                    handleDeleteButton={handleDeleteButton}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>Your cart is empty</p>
+            )}
+          </div>
         </div>
       </div>
-      <Button id="submit" type="submit">
-        Add to Cart
-      </Button>
+      <div className={styles['form-footer']}>
+        <Button id="submit" type="submit">
+          Add to Cart
+        </Button>
+      </div>
     </form>
   );
 };
