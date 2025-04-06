@@ -1,10 +1,9 @@
 .container {
   padding: 8px;
-  width: 30%;
+  width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 
   .content-container {
     display: flex;
@@ -12,14 +11,30 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
+    padding: 16px 0;
   }
 
-  .option-container {
+  .note {
+    padding: 16px;
+    background: white;
+    border-radius: 4px;
+  }
+
+  .option-container,
+  .button-container {
     display: flex;
     width: auto;
     flex-direction: row;
     align-items: center;
-    gap: 4px;
+  }
+
+  .option-container {
+    gap: 16px;
+  }
+
+  .button-container {
+    gap: 8px;
   }
 
   .small {

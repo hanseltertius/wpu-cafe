@@ -5,20 +5,30 @@ import { ButtonColor, ButtonIconType } from '../Button/Button.constants';
 
 interface IPropTypes {
   cart: ICart;
+  handlePlusButton: () => void;
+  handleMinusButton: () => void;
+  handleEditButton: () => void;
+  handleDeleteButton: () => void;
 }
 
 const Cart = (props: IPropTypes) => {
-  const { cart } = props;
+  const {
+    cart,
+    handlePlusButton,
+    handleMinusButton,
+    handleEditButton,
+    handleDeleteButton,
+  } = props;
 
   return (
     <div className={styles.container}>
       <div className={styles['content-container']}>
-        <h3>{cart.name}</h3>
+        <h2>{cart.name}</h2>
         <div className={styles['option-container']}>
           <Button
             id="minus"
             isIcon
-            onClick={() => console.log('minus button clicked')}
+            onClick={handleMinusButton}
             iconType={ButtonIconType.MINUS}
             color={ButtonColor.DANGER}
             className={styles.small}
@@ -27,7 +37,7 @@ const Cart = (props: IPropTypes) => {
           <Button
             id="plus"
             isIcon
-            onClick={() => console.log('plus button clicked')}
+            onClick={handlePlusButton}
             iconType={ButtonIconType.PLUS}
             color={ButtonColor.SUCCEED}
             className={styles.small}
@@ -39,12 +49,13 @@ const Cart = (props: IPropTypes) => {
       )}
       <div className={styles['content-container']}>
         <div></div>
-        <div className={styles['option-container']}>
+        <div className={styles['button-container']}>
           <Button
             id="edit"
             isIcon
             isCircularIcon
             iconType={ButtonIconType.EDIT}
+            onClick={handleEditButton}
             className={styles['icon-small']}
           />
           <Button
@@ -53,6 +64,7 @@ const Cart = (props: IPropTypes) => {
             isCircularIcon
             iconType={ButtonIconType.DELETE}
             color={ButtonColor.DANGER}
+            onClick={handleDeleteButton}
             className={styles['icon-small']}
           />
         </div>
