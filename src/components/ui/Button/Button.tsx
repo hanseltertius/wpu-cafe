@@ -11,10 +11,11 @@ import {
 } from 'react-icons/fa';
 import { ButtonColor, ButtonIconType } from './Button.constants';
 import styles from './Button.module.css';
+import { JSX } from 'react';
 
 interface IPropTypes {
   id: string;
-  children?: string;
+  children?: string | JSX.Element;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   onClick?: () => void;
