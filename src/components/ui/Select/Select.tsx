@@ -8,7 +8,7 @@ interface IPropTypes {
   options: IOption[];
   label?: string;
   name?: string;
-  value?: string;
+  value: string;
   className?: string;
   displayType?: SelectBoxDisplayType;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
@@ -19,7 +19,7 @@ const Select = (props: IPropTypes) => {
     id,
     options,
     label = '',
-    value = '',
+    value,
     name = '',
     className = '',
     onChange = () => {},
