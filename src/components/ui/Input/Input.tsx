@@ -8,12 +8,12 @@ interface IPropTypes {
   label?: string;
   name?: string;
   type?: string;
-  value?: string;
+  value: string;
   placeholder?: string;
   className?: string;
   isRequired?: boolean;
   isSearch?: boolean;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   isRenderSearch?: boolean;
 }
 
@@ -22,13 +22,13 @@ const Input = (props: IPropTypes) => {
     id,
     name,
     label,
-    value = '',
+    value,
     placeholder,
     className,
     type = 'text',
     isRequired = false,
     isRenderSearch = false,
-    onChange = () => {},
+    onChange,
   } = props;
 
   const inputClassName = `${styles.input} ${
