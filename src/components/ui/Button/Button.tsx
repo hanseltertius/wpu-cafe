@@ -7,6 +7,7 @@ import {
   FaPlus,
   FaSearch,
   FaShoppingCart,
+  FaTimes,
   FaTrashAlt,
 } from 'react-icons/fa';
 import { ButtonColor, ButtonIconType } from './Button.constants';
@@ -64,6 +65,8 @@ const Button = (props: IPropTypes) => {
         return <FaShoppingCart />;
       case ButtonIconType.REVIEW:
         return <FaCommentAlt />;
+      case ButtonIconType.CLOSE:
+        return <FaTimes />;
       default:
         return <FaSearch />;
     }

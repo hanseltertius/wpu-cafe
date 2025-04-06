@@ -8,6 +8,7 @@ enum ButtonIconType {
   REDIRECT = 'redirect',
   REVIEW = 'review',
   CART = 'cart',
+  CLOSE = 'close',
 }
 
 enum ButtonColor {
