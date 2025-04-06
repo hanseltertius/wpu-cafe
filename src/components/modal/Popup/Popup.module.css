@@ -1,0 +1,18 @@
+.modal-container {
+  width: 100%;
+  height: 100%;
+
+  .modal-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffb22c;
+    padding: 16px;
+  }
+
+  .modal-content-container {
+    display: flex;
+    height: calc(100% - 72px);
+  }
+}
