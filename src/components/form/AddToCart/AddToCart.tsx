@@ -5,9 +5,6 @@ import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import Input from '../../ui/Input';
 import useInputValue from '../../../hooks/useInputValue';
 import Text from '../../ui/Text';
-import Select from '../../ui/Select';
-import useSelectBoxValue from '../../../hooks/useSelectBoxValue';
-import { tableNumbers } from './AddToCart.constants';
 import { ICart } from '../../../types/cart';
 
 interface IPropTypes {
