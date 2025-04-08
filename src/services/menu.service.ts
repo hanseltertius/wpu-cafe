@@ -1,7 +1,7 @@
 import { environment } from '../constants/environment';
 import axiosInstance from '../utils/axios';
 
-export const getMenu = async (
+export const getMenus = async (
   page: number,
   pageSize: number,
   search?: string,
