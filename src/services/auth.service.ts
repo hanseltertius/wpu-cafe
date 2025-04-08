@@ -3,10 +3,8 @@ import { ILogin } from '../types/auth';
 import axiosInstance from '../utils/axios';
 
 export const login = async (payload: ILogin) => {
-  const result = await axiosInstance.post(
-    `${environment.API_URL}/auth/login`,
-    payload,
-  );
+  const url = `${environment.API_URL}/auth/login`;
+  const result = await axiosInstance.post(url, payload);
 
   return result;
 };
