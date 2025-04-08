@@ -24,11 +24,6 @@ const Popup = (props: IPropTypes) => {
     handleClose,
     zIndex = 1,
   } = props;
-  // react modal
-
-  // header component (ada title dan juga close button), align justify-content nya itu ke center
-
-  // children
 
   ReactModal.setAppElement('#root');
 
