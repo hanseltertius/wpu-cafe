@@ -6,12 +6,24 @@
     background-color: #ffffff;
   }
 
+  .scroll-wrapper {
+    scrollbar-color: #888 #fffff0;
+  }
+
   .modal {
     background-color: #d6c0b3;
+
+    .scroll-wrapper {
+      scrollbar-color: #888 #d6c0b3;
+    }
   }
 
   .item {
     background-color: #e4e0e1;
+
+    .scroll-wrapper {
+      scrollbar-color: #888 #e4e0e1;
+    }
   }
 }
 
@@ -23,12 +35,24 @@
     background-color: #2d0c05;
   }
 
+  .scroll-wrapper {
+    scrollbar-color: #555 #040202;
+  }
+
   .modal {
     background-color: #4b371c;
+
+    .scroll-wrapper {
+      scrollbar-color: #555 #4b371c;
+    }
   }
 
   .item {
     background-color: #6f4e37;
+
+    .scroll-wrapper {
+      scrollbar-color: #555 #6f4e37;
+    }
   }
 }
 
@@ -57,6 +81,10 @@
   color: #040202;
 }
 
+.transparent {
+  background-color: transparent;
+}
+
 button {
   .primary {
     border: 1px solid #b57537;
@@ -77,8 +105,8 @@ button {
   .plain {
     border: 1px solid #fffff0;
   }
-}
 
-.transparent {
-  background-color: transparent;
+  .transparent {
+    border: 0;
+  }
 }
