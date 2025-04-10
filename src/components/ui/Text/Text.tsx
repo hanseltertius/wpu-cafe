@@ -4,21 +4,30 @@ import styles from './Text.module.css';
 interface IPropTypes {
   id: string;
   label?: string;
+  className?: string;
   children?: string | JSX.Element;
   isHorizontalWrapper?: boolean;
 }
 
 const Text = (props: IPropTypes) => {
-  const { id, label, children = '', isHorizontalWrapper = false } = props;
+  const {
+    id,
+    label,
+    className = '',
+    children = '',
+    isHorizontalWrapper = false,
+  } = props;
 
   const wrapperClassName = `${styles['text-wrapper']} ${
     isHorizontalWrapper ? styles.horizontal : ''
   }`;
 
+  const textClassName = `${className}`;
+
   return (
     <div className={wrapperClassName}>
       {label && <label htmlFor={id}>{label}</label>}
-      <p className={styles.text}>{children}</p>
+      <p className={textClassName}>{children}</p>
     </div>
   );
 };
