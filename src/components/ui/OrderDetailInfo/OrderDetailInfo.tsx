@@ -1,13 +1,13 @@
 import { IOrder } from '../../../types/order';
 import Text from '../Text';
-import styles from './OrderDetail.module.css';
+import styles from './OrderDetailInfo.module.css';
 
 interface IPropTypes {
   id: string;
   orderItem: IOrder;
 }
 
-const OrderDetail = (props: IPropTypes) => {
+const OrderDetailInfo = (props: IPropTypes) => {
   const { id, orderItem } = props;
 
   const informations = [
@@ -52,4 +52,4 @@ const OrderDetail = (props: IPropTypes) => {
   );
 };
 
-export default OrderDetail;
+export default OrderDetailInfo;
