@@ -1,3 +1,4 @@
+/* Layout */
 .layout,
 .form {
   display: flex;
@@ -63,6 +64,7 @@
   }
 }
 
+/* Item */
 .card,
 .item {
   display: flex;
@@ -76,7 +78,10 @@
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Button */
 button {
+  cursor: pointer;
+
   .icon {
     width: 40px;
     height: 40px;
@@ -90,11 +95,60 @@ button {
   .icon.circular {
     border-radius: 40px;
   }
+
+  .icon.circular.small {
+    border-radius: 30px;
+  }
 }
 
+.card,
+.form {
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Bottom Button (for mobile) */
 .bottom-button-container {
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
+}
+
+/* Input */
+input,
+select,
+button {
+  padding: 12px;
+  border-radius: 4px;
+}
+
+input,
+select,
+label,
+.text {
+  margin-bottom: 8px;
+}
+
+input {
+  .error {
+    color: #b51200;
+  }
+
+  .mandatory-border {
+    border: 2px solid #b51200;
+  }
+}
+
+input[type='number'] {
+  appearance: textfield; /* Firefox */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari */
+  margin: 0;
 }

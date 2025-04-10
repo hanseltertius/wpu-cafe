@@ -15,10 +15,6 @@ a {
   text-decoration: none;
 }
 
-button {
-  cursor: pointer;
-}
-
 p {
   text-wrap: pretty;
   overflow-wrap: break-word;
