@@ -41,15 +41,13 @@ const Button = (props: IPropTypes) => {
     width = 'auto',
   } = props;
 
-  let buttonClassName = '';
+  let buttonClassName = `${className}`;
   let style = {};
 
   if (isIcon) {
-    buttonClassName += 'icon';
-    if (isCircularIcon) buttonClassName += 'circular';
-    buttonClassName += ` ${className}`;
+    buttonClassName += ' icon';
+    if (isCircularIcon) buttonClassName += ' circular';
   } else {
-    buttonClassName = `${className}`;
     style = { width: width };
   }
 
