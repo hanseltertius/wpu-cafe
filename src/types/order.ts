@@ -5,7 +5,7 @@ interface IOrder {
   customer_name: string;
   table_number: number;
   cart: ICart[];
-  status: 'PENDING' | 'PROCESSING' | 'COMPLETE';
+  status: 'PENDING' | 'PROCESSING' | 'COMPLETED';
   total: number;
   created_at?: string;
   updated_at?: string;
