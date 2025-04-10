@@ -45,11 +45,11 @@ const Popup = (props: IPropTypes) => {
         },
       }}
     >
-      <div className={styles['modal-container']}>
-        <div className={`${styles['modal-header-container']}`}>
+      <div className={styles['popup-container']}>
+        <div className={`${styles['popup-header-container']} primary`}>
           <h1>{title}</h1>
           <Button
-            id="close-modal"
+            id="close-popup"
             isIcon
             iconType={ButtonIconType.CLOSE}
             isCircularIcon
@@ -57,7 +57,7 @@ const Popup = (props: IPropTypes) => {
             onClick={handleClose}
           />
         </div>
-        <div className={styles['modal-content-container']}>{children}</div>
+        <div className={styles['popup-content-container']}>{children}</div>
       </div>
     </ReactModal>
   );
