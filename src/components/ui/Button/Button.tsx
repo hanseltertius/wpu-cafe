@@ -24,6 +24,7 @@ interface IPropTypes {
   isIcon?: boolean;
   iconType?: ButtonIconType;
   isCircularIcon?: boolean;
+  width?: string;
 }
 
 const Button = (props: IPropTypes) => {
@@ -33,17 +34,27 @@ const Button = (props: IPropTypes) => {
     onClick = () => {},
     type = 'button',
     className = '',
-    color = ButtonColor.PRIMARY,
+    color = ButtonColor.PLAIN,
     isIcon = false,
     iconType = ButtonIconType.SEARCH,
     isCircularIcon = false,
+    width = 'auto',
   } = props;
 
-  const buttonClassName = isIcon
-    ? `${styles['button-icon']} ${styles[`button-${color}`]} ${
-        isCircularIcon ? styles.circular : ''
-      } ${className}`
-    : `${styles.button} ${className} ${styles[`button-${color}`]}`;
+  let buttonClassName = '';
+  let style = {};
+
+  if (isIcon) {
+    buttonClassName += 'icon';
+    if (isCircularIcon) buttonClassName += 'circular';
+    buttonClassName += ` ${className}`;
+  } else {
+    buttonClassName = `${className}`;
+    style = { width: width };
+  }
+
+  buttonClassName += ` ${color}`;
+  console.log('buttonClassName : ', buttonClassName);
 
   const renderIconButton = (type: ButtonIconType) => {
     switch (type) {
@@ -73,7 +84,13 @@ const Button = (props: IPropTypes) => {
   };
 
   return (
-    <button id={id} onClick={onClick} type={type} className={buttonClassName}>
+    <button
+      id={id}
+      onClick={onClick}
+      type={type}
+      className={buttonClassName}
+      style={style}
+    >
       {isIcon ? renderIconButton(iconType) : children}
     </button>
   );

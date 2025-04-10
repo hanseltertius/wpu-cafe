@@ -16,6 +16,7 @@ enum ButtonColor {
   SECONDARY = 'secondary',
   DANGER = 'danger',
   SUCCEED = 'succeed',
+  PLAIN = 'plain',
 }
 
 export { ButtonIconType, ButtonColor };
