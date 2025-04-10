@@ -22,7 +22,7 @@ const Text = (props: IPropTypes) => {
     isHorizontalWrapper ? styles.horizontal : ''
   }`;
 
-  const textClassName = `${className}`;
+  const textClassName = `text ${className}`;
 
   return (
     <div className={wrapperClassName}>
