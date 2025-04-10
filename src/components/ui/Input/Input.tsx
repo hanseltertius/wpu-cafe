@@ -1,7 +1,7 @@
 import styles from './Input.module.css';
-import Error from '../Error';
 import Button from '../Button';
 import { ChangeEvent } from 'react';
+import Text from '../Text';
 
 interface IPropTypes {
   id: string;
@@ -13,8 +13,9 @@ interface IPropTypes {
   className?: string;
   isRequired?: boolean;
   isSearch?: boolean;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   isRenderSearch?: boolean;
+  width?: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input = (props: IPropTypes) => {
@@ -28,18 +29,22 @@ const Input = (props: IPropTypes) => {
     type = 'text',
     isRequired = false,
     isRenderSearch = false,
+    width = 'auto',
     onChange,
   } = props;
 
-  const inputClassName = `${styles.input} ${
-    isRequired && value.length === 0 ? styles['mandatory-border'] : ''
-  } ${className}`;
+  const mandatoryBorderClass =
+    isRequired && value.length === 0 ? 'mandatory-border' : '';
+
+  const inputClassName = `${mandatoryBorderClass} ${className}`;
 
   const getErrorMessage = (label?: string) => {
     return label && label.length > 0
       ? `${label} must not be empty`
       : 'Input value must not be empty';
   };
+
+  const errorId = `${id}-error`;
 
   return (
     <div className={`${styles['input-wrapper']}`}>
@@ -52,12 +57,13 @@ const Input = (props: IPropTypes) => {
           className={inputClassName}
           name={name}
           value={value}
+          style={{ width: width }}
           onChange={onChange}
         ></input>
         {isRenderSearch && <Button id="search" isIcon isCircularIcon />}
       </div>
       {isRequired && value.length === 0 && (
-        <Error message={getErrorMessage(label)} />
+        <Text id={errorId}>{getErrorMessage(label)}</Text>
       )}
     </div>
   );
