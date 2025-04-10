@@ -109,6 +109,7 @@ const AddToCart = (prop: IPropTypes) => {
             id="quantity"
             type="number"
             value={quantity.inputValue}
+            width="50%"
             onChange={setQuantity}
           />
           <Button
@@ -132,7 +133,7 @@ const AddToCart = (prop: IPropTypes) => {
       </div>
 
       <div className={styles['form-footer']}>
-        <Button id="submit" type="submit">
+        <Button id="submit" type="submit" width="100%">
           Add to Cart
         </Button>
       </div>

@@ -100,7 +100,7 @@ const CustomerInfo = (props: IPropTypes) => {
         </div>
       </div>
       <div className={styles['form-footer']}>
-        <Button id="submit" type="submit">
+        <Button id="submit" type="submit" width="100%">
           Add to Cart
         </Button>
       </div>

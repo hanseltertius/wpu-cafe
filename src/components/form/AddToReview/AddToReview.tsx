@@ -98,7 +98,7 @@ const AddToReview = (props: IPropTypes) => {
         />
       </div>
       <div className={styles['form-footer']}>
-        <Button id="submit" type="submit">
+        <Button id="submit" type="submit" width="100%">
           Submit a review
         </Button>
       </div>
