@@ -25,6 +25,7 @@
   .layout-content,
   .form-content {
     flex: 1;
+    min-height: 0;
   }
 
   .form-content {

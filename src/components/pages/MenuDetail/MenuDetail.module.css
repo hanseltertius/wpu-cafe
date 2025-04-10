@@ -1,0 +1,29 @@
+.menu-detail-information-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+
+  @media (max-width: 1024px) {
+    flex: 1;
+  }
+
+  @media (min-width: 1024px) {
+    flex: 6;
+    margin-bottom: 16px;
+  }
+
+  .menu-detail-information {
+    background-color: gold;
+  }
+}
+
+.menu-detail-reviews-container {
+  background-color: pink;
+
+  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    min-height: 0;
+  }
+}
