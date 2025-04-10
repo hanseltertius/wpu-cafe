@@ -11,6 +11,7 @@ interface IPropTypes {
   value: string;
   className?: string;
   displayType?: SelectBoxDisplayType;
+  width?: string;
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
@@ -22,11 +23,12 @@ const Select = (props: IPropTypes) => {
     value,
     name = '',
     className = '',
+    width = 'auto',
     onChange = () => {},
     displayType = SelectBoxDisplayType.NAME,
   } = props;
 
-  const selectClassName = `${styles.select} ${className} `;
+  const selectClassName = `${className}`;
 
   const getOptionDisplay = (
     option: IOption,
@@ -45,13 +47,14 @@ const Select = (props: IPropTypes) => {
   };
 
   return (
-    <div className={`${styles['select-wrapper']}`}>
+    <div>
       {label && <label htmlFor={id}>{label}</label>}
       <select
         name={name}
         id={id}
         className={selectClassName}
         value={value}
+        style={{ width: width }}
         onChange={onChange}
       >
         {options.map((option: IOption) => (
