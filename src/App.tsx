@@ -1,20 +1,16 @@
-import Button from './components/ui/Button';
-import {
-  ButtonColor,
-  ButtonIconType,
-} from './components/ui/Button/Button.constants';
-import Input from './components/ui/Input';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes';
+import { ToastContainer } from 'react-toastify';
+
+const queryClient = new QueryClient();
 
 function App() {
-  // return <Input id="test" label="Test" required />;
   return (
-    <Button
-      id="search"
-      iconType={ButtonIconType.DELETE}
-      color={ButtonColor.DANGER}
-      isIcon
-      isCircularIcon
-    />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ToastContainer position="top-right" autoClose={3000} />
+    </QueryClientProvider>
   );
 }
 
