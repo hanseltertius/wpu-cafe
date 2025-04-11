@@ -39,7 +39,7 @@ const Cart = (props: IPropTypes) => {
             isIcon
             onClick={handlePlusButton}
             iconType={ButtonIconType.PLUS}
-            color={ButtonColor.SUCCEED}
+            color={ButtonColor.SUCCESS}
             className={styles.small}
           />
         </div>

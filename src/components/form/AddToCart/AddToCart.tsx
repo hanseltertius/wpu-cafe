@@ -117,7 +117,7 @@ const AddToCart = (prop: IPropTypes) => {
             isIcon
             onClick={addQuantity}
             iconType={ButtonIconType.PLUS}
-            color={ButtonColor.SUCCEED}
+            color={ButtonColor.SUCCESS}
             className={styles.small}
           />
         </div>
