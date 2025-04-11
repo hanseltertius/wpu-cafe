@@ -47,8 +47,12 @@ const Select = (props: IPropTypes) => {
   };
 
   return (
-    <div>
-      {label && <label htmlFor={id}>{label}</label>}
+    <div className={styles['select-wrapper']}>
+      {label && (
+        <label className="label" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <select
         name={name}
         id={id}
