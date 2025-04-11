@@ -5,10 +5,12 @@ import styles from './Menu.module.css';
 
 interface IPropTypes {
   menu: IMenu;
+  handleAddToCart?: (id: string) => void;
+  handleAddNewReview?: (id: string) => void;
 }
 
 const Menu = (props: IPropTypes) => {
-  const { menu } = props;
+  const { menu, handleAddToCart, handleAddNewReview } = props;
 
   return (
     <div className={styles.item} key={menu.id}>
@@ -20,14 +22,15 @@ const Menu = (props: IPropTypes) => {
           <div className={styles['bottom-button-container']}>
             <Button
               id={`cart-${menu.id}`}
-              onClick={() => console.log('add to cart')}
+              onClick={() => console.log(menu.id)}
               isIcon
               iconType={ButtonIconType.CART}
               isCircularIcon
+              color={ButtonColor.PRIMARY}
             />
             <Button
               id={`review-${menu.id}`}
-              onClick={() => console.log('add a new review')}
+              onClick={() => console.log(menu.id)}
               isIcon
               iconType={ButtonIconType.REVIEW}
               isCircularIcon
