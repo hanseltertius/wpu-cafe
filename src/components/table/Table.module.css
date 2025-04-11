@@ -33,7 +33,7 @@ div[data-column-id='action-button'][role='cell'] {
 .table-container {
   display: 'flex';
   flex-direction: 'column';
-  height: calc(100vh - 64px);
+  height: calc(100vh - 128px);
 
   .table-content {
     display: flex;

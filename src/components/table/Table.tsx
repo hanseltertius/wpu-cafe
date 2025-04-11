@@ -68,7 +68,7 @@ const Table = <T,>(props: IPropTypes<T>) => {
               onSort={handleSort}
               onChangePage={handlePageChange}
               onChangeRowsPerPage={handlePerRowsChange}
-              fixedHeaderScrollHeight="calc(100vh - 100px)"
+              fixedHeaderScrollHeight="calc(100vh - 164px)"
             />
           </section>
         </section>
