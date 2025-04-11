@@ -12,18 +12,31 @@
     margin-bottom: 16px;
   }
 
-  .menu-detail-information {
-    background-color: gold;
+  .menu-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .image {
+      width: 300px;
+      height: 300px;
+      object-fit: fill;
+      justify-content: center;
+    }
   }
 }
 
 .menu-detail-reviews-container {
-  background-color: pink;
-
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
     flex: 4;
     min-height: 0;
+  }
+
+  .menu-detail-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 }
