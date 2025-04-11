@@ -51,7 +51,11 @@ const Input = (props: IPropTypes) => {
 
   return (
     <div className={`${styles['input-wrapper']}`}>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label className="label" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <div className={`${styles['input-content-container']}`}>
         <input
           placeholder={placeholder}
@@ -73,7 +77,9 @@ const Input = (props: IPropTypes) => {
         )}
       </div>
       {isRequired && value.length === 0 && (
-        <Text id={errorId}>{getErrorMessage(label)}</Text>
+        <Text id={errorId} className="error">
+          {getErrorMessage(label)}
+        </Text>
       )}
     </div>
   );

@@ -1,10 +1,14 @@
 .input-wrapper {
   width: 100%;
+}
 
-  .input-content-container {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
-    align-items: center;
-  }
+.input-wrapper .input-content-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.input-content-container:not(:first-child) {
+  margin-top: 8px;
 }
