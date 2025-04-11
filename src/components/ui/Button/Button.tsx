@@ -11,7 +11,6 @@ import {
   FaTrashAlt,
 } from 'react-icons/fa';
 import { ButtonColor, ButtonIconType } from './Button.constants';
-import styles from './Button.module.css';
 import { JSX } from 'react';
 
 interface IPropTypes {
@@ -52,7 +51,6 @@ const Button = (props: IPropTypes) => {
   }
 
   buttonClassName += ` ${color}`;
-  console.log('buttonClassName : ', buttonClassName);
 
   const renderIconButton = (type: ButtonIconType) => {
     switch (type) {
