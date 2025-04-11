@@ -14,9 +14,13 @@ const axiosCore = async (url: string, options: AxiosRequestConfig = {}) => {
     return response.data;
   } catch (error: any) {
     if (axios.isAxiosError(error)) {
-      const message =
-        error.response?.data?.message || error.message || 'Unknown error';
-      throw new Error(message);
+      if (error.status === 401) {
+        throw new Error('Unauthorized');
+      } else {
+        const message =
+          error.response?.data?.message || error.message || 'Unknown error';
+        throw new Error(message);
+      }
     }
 
     throw new Error('Unexpected error');
