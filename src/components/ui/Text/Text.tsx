@@ -31,7 +31,7 @@ const Text = (props: IPropTypes) => {
           {label}
         </label>
       )}
-      <p className={textClassName}>{children}</p>
+      <div className={textClassName}>{children}</div>
     </div>
   );
 };
