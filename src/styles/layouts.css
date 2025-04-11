@@ -21,6 +21,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 16px;
   }
 
   .layout-content,
@@ -36,8 +37,6 @@
   .layout-footer,
   .form-footer {
     margin-top: 16px;
-    display: flex;
-    flex-direction: column;
     justify-content: flex-end;
   }
 
@@ -81,24 +80,27 @@
 /* Button */
 button {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .icon {
-    width: 40px;
-    height: 40px;
-  }
+button.icon {
+  width: 46px;
+  height: 46px;
+}
 
-  .icon.small {
-    width: 30px;
-    height: 30px;
-  }
+button.icon.small {
+  width: 30px;
+  height: 30px;
+}
 
-  .icon.circular {
-    border-radius: 40px;
-  }
+button.icon.circular {
+  border-radius: 46px;
+}
 
-  .icon.circular.small {
-    border-radius: 30px;
-  }
+button.icon.circular.small {
+  border-radius: 30px;
 }
 
 .card,
@@ -120,17 +122,22 @@ button {
 
 /* Input */
 input,
-select,
 button {
-  padding: 12px;
   border-radius: 4px;
 }
 
-input,
 select,
-label,
-.text {
-  margin-bottom: 8px;
+button {
+  display: flex;
+  align-items: center;
+}
+
+input:not(:first-child),
+select:not(:first-child),
+label:not(:first-child),
+img:not(:first-child),
+.text:not(:first-child) {
+  margin-top: 8px;
 }
 
 input {
