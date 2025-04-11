@@ -86,6 +86,13 @@ const ReviewList = () => {
     }
   };
 
+  const isReviewLoading = () => {
+    if (!!reviewQuery) {
+      const isLoading = reviewQuery.isLoading;
+      return isLoading;
+    } else return false;
+  };
+
   const getReviewData: () => IReview[] = () => {
     if (!!reviewQuery) {
       const dataContainer = reviewQuery.data;
@@ -111,7 +118,9 @@ const ReviewList = () => {
   return (
     <main className="layout">
       <Table
+        id="reviews"
         columns={columns}
+        isLoading={isReviewLoading()}
         data={getReviewData()}
         paginationTotalRows={getTotalRows()}
         handleSort={handleSort}
