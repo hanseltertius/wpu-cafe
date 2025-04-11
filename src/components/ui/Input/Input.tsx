@@ -2,6 +2,7 @@ import styles from './Input.module.css';
 import Button from '../Button';
 import { ChangeEvent } from 'react';
 import Text from '../Text';
+import { ButtonColor } from '../Button/Button.constants';
 
 interface IPropTypes {
   id: string;
@@ -16,6 +17,7 @@ interface IPropTypes {
   isRenderSearch?: boolean;
   width?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSearchClick?: () => void;
 }
 
 const Input = (props: IPropTypes) => {
@@ -25,12 +27,13 @@ const Input = (props: IPropTypes) => {
     label,
     value,
     placeholder,
-    className,
+    className = '',
     type = 'text',
     isRequired = false,
     isRenderSearch = false,
     width = 'auto',
     onChange,
+    onSearchClick = () => {},
   } = props;
 
   const mandatoryBorderClass =
@@ -60,7 +63,14 @@ const Input = (props: IPropTypes) => {
           style={{ width: width }}
           onChange={onChange}
         ></input>
-        {isRenderSearch && <Button id="search" isIcon isCircularIcon />}
+        {isRenderSearch && (
+          <Button
+            id="search"
+            isIcon
+            color={ButtonColor.PRIMARY}
+            onClick={onSearchClick}
+          />
+        )}
       </div>
       {isRequired && value.length === 0 && (
         <Text id={errorId}>{getErrorMessage(label)}</Text>
