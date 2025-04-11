@@ -9,7 +9,7 @@ const OrderItem = (props: IPropTypes) => {
   const { item } = props;
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} key={item.menuItem?.id}>
       <img
         src={item.menuItem?.image_url}
         alt={item.menuItem?.name}
