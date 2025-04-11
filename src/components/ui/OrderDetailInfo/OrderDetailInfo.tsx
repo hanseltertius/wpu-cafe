@@ -7,47 +7,51 @@ interface IPropTypes {
   orderItem: IOrder;
 }
 
+interface IInformation {
+  id: string;
+  label: string;
+  text: string;
+}
+
 const OrderDetailInfo = (props: IPropTypes) => {
   const { id, orderItem } = props;
 
-  const informations = [
-    { id: 'order-id', label: 'Order ID', text: orderItem.id },
+  const informationList: IInformation[] = [
+    { id: 'order-id', label: 'Order ID', text: orderItem?.id },
     {
       id: 'order-customer-name',
       label: 'Customer Name',
-      text: orderItem.customer_name,
+      text: orderItem?.customer_name,
     },
     {
       id: 'order-table-number',
       label: 'Table Number',
-      text: String(orderItem.table_number),
+      text: !!orderItem.table_number ? String(orderItem?.table_number) : '',
     },
-    { id: 'order-status', label: 'Status', text: orderItem.status },
-    { id: 'order-total', label: 'Total', text: String(orderItem.total) },
+    { id: 'order-status', label: 'Status', text: orderItem?.status },
+    {
+      id: 'order-total',
+      label: 'Total',
+      text: !!orderItem.total ? String(orderItem?.total) : '',
+    },
+    {
+      id: 'order-last-update',
+      label: 'Last Update',
+      text: !!orderItem?.updated_at ? orderItem?.updated_at : '',
+    },
   ];
-
-  /**
-   * Container : bakal pake grid, dimana kita bisa display 3 (untuk web), 2 (untuk tablet) 1 (untuk mobile)
-   * di dalam container itu ada label component (dimana kita itu bisa pake title)
-   */
-  const updatedAt: string = !!orderItem?.updated_at
-    ? orderItem?.updated_at
-    : '';
 
   return (
     <div id={id} className={styles.container}>
-      <div className={styles['info-container']}>
-        {informations.map((info) => {
+      <div className="grid">
+        {informationList.map((info) => {
           return (
-            <Text id={info.id} label={info.label}>
+            <Text id={info.id} label={info.label} key={info.id}>
               <strong>{info.text}</strong>
             </Text>
           );
         })}
       </div>
-      <Text id="last-update" label="Last Update: " isHorizontalWrapper>
-        {updatedAt}
-      </Text>
     </div>
   );
 };
