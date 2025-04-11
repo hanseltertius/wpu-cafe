@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 85px);
   padding: 16px;
 
   .layout-content,
@@ -22,6 +22,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    gap: 8px;
   }
 
   .layout-content,
@@ -123,7 +124,12 @@ button.icon.circular.small {
 /* Input */
 input,
 button {
+  padding: 12px;
   border-radius: 4px;
+}
+
+button.icon {
+  padding: 0px;
 }
 
 select,
@@ -136,18 +142,17 @@ input:not(:first-child),
 select:not(:first-child),
 img:not(:first-child),
 .label:not(:first-child),
-.text:not(:first-child) {
+.text:not(:first-child),
+.error {
   margin-top: 8px;
 }
 
-input {
-  .error {
-    color: #b51200;
-  }
+.text.error {
+  color: #b51200;
+}
 
-  .mandatory-border {
-    border: 2px solid #b51200;
-  }
+input.mandatory-border {
+  border: 2px solid #b51200;
 }
 
 input[type='number'] {
@@ -158,4 +163,33 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none; /* Chrome, Safari */
   margin: 0;
+}
+
+.danger-text {
+  color: #b51200;
+}
+
+/* Tables */
+.action-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+div[data-column-id='action-button'][class~='rdt_TableCol'] {
+  position: sticky;
+  right: 0;
+  background-color: inherit;
+  border-left: 1px solid lightgray;
+  z-index: 2;
+}
+
+div[data-column-id='action-button'][role='cell'] {
+  position: sticky;
+  right: 0;
+  background-color: inherit;
+  z-index: 0;
+  border-left: 1px solid lightgray;
 }
