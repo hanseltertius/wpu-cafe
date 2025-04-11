@@ -15,7 +15,7 @@ enum ButtonColor {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   DANGER = 'danger',
-  SUCCEED = 'succeed',
+  SUCCESS = 'success',
   PLAIN = 'plain',
 }
 
