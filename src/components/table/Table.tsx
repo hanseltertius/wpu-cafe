@@ -1,6 +1,5 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
 import styles from './Table.module.css';
-import Input from '../ui/Input';
 
 interface IPropTypes<T> {
   id: string;

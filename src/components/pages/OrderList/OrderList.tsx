@@ -1,7 +1,6 @@
 import { TableColumn } from 'react-data-table-component';
 import { IOrder } from '../../../types/order';
 import Button from '../../ui/Button';
-import styles from './OrderList.module.css';
 import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Table from '../../table';

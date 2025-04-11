@@ -27,7 +27,7 @@ const MenuList = () => {
   const customerName = useInputValue('');
   const tableNumber = useSelectBoxValue('1');
 
-  const [isProcessingData, setIsProcessingData] = useState(false);
+  // const [isProcessingData, setIsProcessingData] = useState(false);
 
   const cartStore = useCartStore();
 

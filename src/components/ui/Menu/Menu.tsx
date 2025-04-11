@@ -10,7 +10,7 @@ interface IPropTypes {
 }
 
 const Menu = (props: IPropTypes) => {
-  const { menu, handleAddToCart, handleAddNewReview } = props;
+  const { menu } = props;
 
   return (
     <div className={styles.item} key={menu.id}>

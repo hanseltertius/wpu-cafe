@@ -1,6 +1,5 @@
 import { environment } from '../constants/environment';
 import { ICustomerInfo } from '../types/customerInfo';
-import { IOrder } from '../types/order';
 import axiosInstance from '../utils/axios';
 import { getLocalStorage } from '../utils/storage';
 
