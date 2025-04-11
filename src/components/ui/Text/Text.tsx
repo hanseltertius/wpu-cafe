@@ -26,7 +26,11 @@ const Text = (props: IPropTypes) => {
 
   return (
     <div className={wrapperClassName}>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label className="label" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <p className={textClassName}>{children}</p>
     </div>
   );

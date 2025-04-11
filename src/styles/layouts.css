@@ -134,8 +134,8 @@ button {
 
 input:not(:first-child),
 select:not(:first-child),
-label:not(:first-child),
 img:not(:first-child),
+.label:not(:first-child),
 .text:not(:first-child) {
   margin-top: 8px;
 }

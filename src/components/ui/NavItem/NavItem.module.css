@@ -1,0 +1,29 @@
+.navbar-item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16px;
+  gap: 16px;
+}
+
+.navbar-item {
+  flex: 1;
+}
+
+.navbar-item-icon {
+  color: #040202;
+}
+
+.navbar-item-container {
+  color: #040202;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #d99937;
+  color: #ffffff;
+}
+
+.active .navbar-item-icon {
+  color: #ffffff;
+}

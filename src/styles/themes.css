@@ -1,59 +1,59 @@
 .light {
   background-color: #fffff0;
   color: #040202;
+}
 
-  .navbar {
-    background-color: #ffffff;
-  }
+.light .navbar {
+  background-color: #ffffff;
+}
 
-  .scroll-wrapper {
-    scrollbar-color: #888 #fffff0;
-  }
+.light .scroll-wrapper {
+  scrollbar-color: #888 #fffff0;
+}
 
-  .modal {
-    background-color: #d6c0b3;
+.light .modal {
+  background-color: #d6c0b3;
+}
 
-    .scroll-wrapper {
-      scrollbar-color: #888 #d6c0b3;
-    }
-  }
+.light .modal .scroll-wrapper {
+  scrollbar-color: #888 #d6c0b3;
+}
 
-  .item {
-    background-color: #e4e0e1;
+.light .item {
+  background-color: #e4e0e1;
+}
 
-    .scroll-wrapper {
-      scrollbar-color: #888 #e4e0e1;
-    }
-  }
+.light .item .scroll-wrapper {
+  scrollbar-color: #888 #e4e0e1;
 }
 
 .dark {
   background-color: #040202;
   color: #fffff0;
+}
 
-  .navbar {
-    background-color: #2d0c05;
-  }
+.dark .navbar {
+  background-color: #2d0c05;
+}
 
-  .scroll-wrapper {
-    scrollbar-color: #555 #040202;
-  }
+.dark .scroll-wrapper {
+  scrollbar-color: #555 #040202;
+}
 
-  .modal {
-    background-color: #4b371c;
+.dark .modal {
+  background-color: #4b371c;
+}
 
-    .scroll-wrapper {
-      scrollbar-color: #555 #4b371c;
-    }
-  }
+.dark .modal .scroll-wrapper {
+  scrollbar-color: #555 #4b371c;
+}
 
-  .item {
-    background-color: #6f4e37;
+.dark .item {
+  background-color: #6f4e37;
+}
 
-    .scroll-wrapper {
-      scrollbar-color: #555 #6f4e37;
-    }
-  }
+.dark .item .scroll-wrapper {
+  scrollbar-color: #555 #6f4e37;
 }
 
 /* Color */
@@ -77,18 +77,14 @@
   color: #fffff0;
 }
 
-.light {
-  .plain {
-    background-color: #fffff0;
-    color: #040202;
-  }
+.light .plain {
+  background-color: #fffff0;
+  color: #040202;
 }
 
-.dark {
-  .plain {
-    background-color: #040202;
-    color: #fffff0;
-  }
+.dark .plain {
+  background-color: #040202;
+  color: #fffff0;
 }
 
 .transparent {
@@ -112,18 +108,10 @@ button.danger {
   border: 1px solid #b51200;
 }
 
-.light {
-  button.plain {
-    border: 1px solid #040202;
-  }
+.light button.plain {
+  border: 1px solid #040202;
 }
 
-.dark {
-  button.plain {
-    border: 1px solid #fffff0;
-  }
-}
-
-button.transparent {
-  border: 0;
+.dark button.plain {
+  border: 1px solid #fffff0;
 }
