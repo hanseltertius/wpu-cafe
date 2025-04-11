@@ -51,14 +51,13 @@ const AddToCart = (prop: IPropTypes) => {
 
     const notes = form.notes.value as string;
 
-    const payload: ICart = {
+    const payload = {
       menuItemId: menuItemId,
       name: name,
       quantity,
       notes,
     };
 
-    // TODO : call API
     console.log('payload : ', payload);
   };
 
