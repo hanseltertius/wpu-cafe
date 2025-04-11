@@ -14,7 +14,7 @@ const Loading = (props: IPropTypes) => {
 
   return (
     <div className={loadingClassName}>
-      <OrbitProgress />
+      <OrbitProgress color="#d99937" />
     </div>
   );
 };
