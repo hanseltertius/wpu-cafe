@@ -1,6 +1,6 @@
 import { environment } from '../constants/environment';
 import { ILogin } from '../types/auth';
-import axiosInstance from '../utils/axios';
+import axiosInstance from '../utils/axiosUtil';
 
 export const login = async (payload: ILogin) => {
   const url = `${environment.API_URL}/auth/login`;

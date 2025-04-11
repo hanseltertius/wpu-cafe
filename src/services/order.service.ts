@@ -1,6 +1,6 @@
 import { environment } from '../constants/environment';
 import { ICustomerInfo } from '../types/customerInfo';
-import axiosInstance from '../utils/axios';
+import axiosInstance from '../utils/axiosUtil';
 import { getLocalStorage } from '../utils/storage';
 
 export const getOrders = async (
