@@ -1,5 +1,6 @@
 import { environment } from '../constants/environment';
 import { ICustomerInfo } from '../types/customerInfo';
+import { IOrder } from '../types/order';
 import axiosInstance from '../utils/axios';
 import { getLocalStorage } from '../utils/storage';
 
@@ -7,14 +8,14 @@ export const getOrders = async (
   page: number,
   pageSize: number,
   search?: string,
-  status?: string,
+  category?: string,
   sortBy?: string,
   sortOrder?: string,
 ) => {
   let url = `${environment.API_URL}/orders?page=${page}&pageSize=${pageSize}`;
 
   if (!!search) url += `&search=${search}`;
-  if (!!status) url += `&category=${status}`;
+  if (!!category) url += `&category=${category}`;
   if (!!sortBy) url += `&sortBy=${sortBy}`;
   if (!!sortOrder) url += `&sortOrder=${sortOrder}`;
 
@@ -48,7 +49,7 @@ export const createOrder = async (payload: ICustomerInfo) => {
   return result;
 };
 
-export const updateOrder = async (id: string, payload: ICustomerInfo) => {
+export const updateOrder = async (id: string, payload: { status: string }) => {
   const url = `${environment.API_URL}/orders/${id}`;
   const result = await axiosInstance.put(url, payload, {
     headers: {
