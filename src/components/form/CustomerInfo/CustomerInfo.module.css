@@ -23,16 +23,26 @@
       flex: 1;
       overflow-y: auto;
       display: flex;
+      min-height: 0;
       scrollbar-color: #888 lightgray; /* thumb color, track color */
 
       .cart-container {
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
 
         .cart-item-with-separator {
           border-bottom: 1px solid black;
         }
+      }
+
+      .cart-empty-container {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

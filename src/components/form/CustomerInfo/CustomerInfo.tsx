@@ -6,6 +6,7 @@ import Select from '../../ui/Select';
 import { tableNumbers } from './CustomerInfo.constants';
 import { ICart } from '../../../types/cart';
 import Cart from '../../ui/Cart';
+import { ButtonColor } from '../../ui/Button/Button.constants';
 
 interface IPropTypes {
   id: string;
@@ -18,6 +19,7 @@ interface IPropTypes {
   handleMinusButton: () => void;
   handleEditButton: () => void;
   handleDeleteButton: () => void;
+  handleCreateOrder: (event: FormEvent) => void;
 }
 
 const CustomerInfo = (props: IPropTypes) => {
@@ -32,31 +34,16 @@ const CustomerInfo = (props: IPropTypes) => {
     handleMinusButton,
     handleEditButton,
     handleDeleteButton,
+    handleCreateOrder,
   } = props;
 
-  /**
-   * Layout (pake flexbox) :
-   * - customer information
-   * - layout to contain list of Cart, pake flexbox aja dengan flex : 1, trus di bikin scrollable
-   * - Button for Submit Order (disable while empty)
-   */
-
-  const handleCustomerInfo = (event: FormEvent) => {
-    event.preventDefault();
-
-    if (cartList.length === 0) return;
-  };
-
-  // TODO : form-content
-  // TODO : form-footer
-  // TODO : sebisa mungkin itu customer info nya bisa di handle di popup maupun di bagian component
-
   return (
-    <form id={id} className={styles.form} onSubmit={handleCustomerInfo}>
+    <form id={id} className={styles.form} onSubmit={handleCreateOrder}>
       <div className={styles['form-content']}>
         <div className={styles['customer-info']}>
           <Input
             id="customerName"
+            width="100%"
             label="Customer Name"
             placeholder="Enter your Name"
             value={customerName}
@@ -66,6 +53,7 @@ const CustomerInfo = (props: IPropTypes) => {
 
           <Select
             id="tableNumber"
+            width="100%"
             label="Table Number"
             value={tableNumber}
             onChange={onTableNumberChange}
@@ -94,14 +82,21 @@ const CustomerInfo = (props: IPropTypes) => {
                 </div>
               ))
             ) : (
-              <p>Your cart is empty</p>
+              <div className={styles['cart-empty-container']}>
+                Your cart is empty
+              </div>
             )}
           </div>
         </div>
       </div>
       <div className={styles['form-footer']}>
-        <Button id="submit" type="submit" width="100%">
-          Add to Cart
+        <Button
+          id="submit"
+          type="submit"
+          width="100%"
+          color={ButtonColor.PRIMARY}
+        >
+          Create Order
         </Button>
       </div>
     </form>
