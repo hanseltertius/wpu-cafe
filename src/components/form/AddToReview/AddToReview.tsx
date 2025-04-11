@@ -16,32 +16,6 @@ interface IPropTypes {
 const AddToReview = (props: IPropTypes) => {
   const { id, menuItemId } = props;
 
-  /**
-   * TODO :
-   *
-   * - Layout
-   *  - reviewer name
-   *  - ratings (1 - 5)
-   *  - comment
-   *
-   * 1. bikin layout container
-   * i. Reviewer Name
-   * ii. Ratings (sementara pake select box), paling coba yang star
-   *
-   */
-
-  /**
-   *
-   * Sample Payload :
-   * {
-   *    "menuItemId": "item-uuid",
-   *    "reviewerName": "John Smith",
-   *    "rating": 5,
-   *    "comment": "Excellent coffee, would order again!"
-   * }
-   *
-   */
-
   const handleReview = (event: FormEvent) => {
     event.preventDefault();
 
@@ -59,8 +33,6 @@ const AddToReview = (props: IPropTypes) => {
       rating,
       comment,
     };
-
-    // TODO : call API
 
     console.log('payload : ', payload);
   };
