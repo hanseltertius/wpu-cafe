@@ -5,6 +5,7 @@ import { useState } from 'react';
 import styles from './Navbar.module.css';
 import NavItem from '../NavItem';
 import { FaClipboardList, FaCommentAlt, FaPowerOff } from 'react-icons/fa';
+import { removeLocalStorage } from '../../../utils/storage';
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -48,9 +49,10 @@ const Navbar = () => {
               to="/"
               menuIcon={<FaPowerOff />}
               onClick={() => {
-                console.log('logout clicked');
+                removeLocalStorage('auth');
                 setDrawerOpen(false);
               }}
+              isLogout
             >
               Logout
             </NavItem>
