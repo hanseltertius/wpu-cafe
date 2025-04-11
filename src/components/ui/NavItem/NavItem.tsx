@@ -6,20 +6,37 @@ interface IPropTypes {
   menuIcon: JSX.Element;
   to: string;
   children: string | JSX.Element;
+  className?: string;
+  isLogout?: boolean;
   onClick?: () => void;
 }
 
-const NavItem = ({ menuIcon, to, children, onClick }: IPropTypes) => {
+const NavItem = (props: IPropTypes) => {
+  const {
+    menuIcon,
+    to,
+    children,
+    className = '',
+    isLogout = false,
+    onClick = () => {},
+  } = props;
+
+  const isDangerColor = isLogout ? styles['danger-color'] : '';
+
   return (
     <NavLink
       to={to}
       end
       onClick={onClick}
       className={({ isActive }) =>
-        `${styles['navbar-item-container']} ${isActive ? styles.active : ''}`
+        `${styles['navbar-item-container']} ${isActive ? styles.active : ''} 
+          ${isDangerColor}
+          ${className}`
       }
     >
-      <div className={styles['navbar-item-icon']}>{menuIcon}</div>
+      <div className={`${styles['navbar-item-icon']} ${isDangerColor}`}>
+        {menuIcon}
+      </div>
       <div className={styles['navbar-item']}>{children}</div>
     </NavLink>
   );

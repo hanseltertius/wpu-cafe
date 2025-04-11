@@ -10,13 +10,18 @@
   flex: 1;
 }
 
-.navbar-item-icon {
+.navbar-item-icon,
+.navbar-item-container {
   color: #040202;
 }
 
 .navbar-item-container {
-  color: #040202;
   text-decoration: none;
+}
+
+.navbar-item-icon.danger-color,
+.navbar-item-container.danger-color {
+  color: #b51200;
 }
 
 .active {
