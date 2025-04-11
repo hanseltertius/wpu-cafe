@@ -4,11 +4,9 @@
   min-height: 0;
 
   @media (min-width: 1024px) {
-    flex: 3;
+    flex: 45;
     margin-bottom: 16px;
   }
-
-  background-color: darkorange;
 }
 
 .order-detail-menus-container {
@@ -21,8 +19,10 @@
   }
 
   @media (min-width: 1024px) {
-    flex: 7;
+    flex: 55;
   }
+}
 
-  background-color: purple;
+.order-detail-menus {
+  display: grid;
 }
