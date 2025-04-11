@@ -1,4 +1,5 @@
 import DataTable, { TableColumn } from 'react-data-table-component';
+import styles from './Table.module.css';
 import Input from '../ui/Input';
 
 interface IPropTypes<T> {
@@ -37,7 +38,7 @@ const Table = <T,>(props: IPropTypes<T>) => {
   } = props;
 
   return (
-    <section className="table-layout-container">
+    <section className={styles['table-layout-container']}>
       {isSearchVisible && (
         <header className="layout-header">
           <Input
@@ -52,8 +53,8 @@ const Table = <T,>(props: IPropTypes<T>) => {
         </header>
       )}
       <section className="layout-content">
-        <section className="table-container">
-          <section className="table-content">
+        <section className={styles['table-container']}>
+          <section className={styles['table-content']}>
             <DataTable
               columns={columns}
               data={data}

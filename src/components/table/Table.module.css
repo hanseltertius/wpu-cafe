@@ -7,29 +7,6 @@
   min-height: 0;
 }
 
-.action-button-container {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  height: 100%;
-}
-
-div[data-column-id='action-button'][class~='rdt_TableCol'] {
-  position: sticky;
-  right: 0;
-  background-color: inherit;
-  border-left: 1px solid lightgray;
-  z-index: 2;
-}
-
-div[data-column-id='action-button'][role='cell'] {
-  position: sticky;
-  right: 0;
-  background-color: inherit;
-  z-index: 0;
-  border-left: 1px solid lightgray;
-}
-
 .table-container {
   display: 'flex';
   flex-direction: 'column';
