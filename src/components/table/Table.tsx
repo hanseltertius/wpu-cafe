@@ -3,55 +3,35 @@ import styles from './Table.module.css';
 import Input from '../ui/Input';
 
 interface IPropTypes<T> {
-  inputId?: string;
-  inputValue?: string;
+  id: string;
   columns: TableColumn<T>[];
   data: T[];
-  setInputValue?: () => void;
   isLoading?: boolean;
   paginationDefaultPerPage: number;
   paginationPerPage: number;
   paginationTotalRows: number;
-  isSearchVisible?: boolean;
   handleSort: (column: TableColumn<T>, sortDirection: string) => void;
   handlePageChange: (page: number) => void;
   handlePerRowsChange: (newPageSize: number) => void;
-  handleSearch?: () => void;
 }
 
 const Table = <T,>(props: IPropTypes<T>) => {
   const {
-    inputId = '',
-    inputValue = '',
+    id,
     columns,
     data,
-    setInputValue = () => {},
     isLoading = false,
-    isSearchVisible = false,
     paginationTotalRows,
     paginationDefaultPerPage,
     paginationPerPage,
     handleSort = () => {},
     handlePageChange = () => {},
     handlePerRowsChange = () => {},
-    handleSearch = () => {},
   } = props;
 
+  // set height, will use default from here
   return (
-    <section className={styles['table-layout-container']}>
-      {isSearchVisible && (
-        <header className="layout-header">
-          <Input
-            id={inputId}
-            width="100%"
-            value={inputValue}
-            onChange={setInputValue}
-            isSearch
-            isRenderSearch
-            onSearchClick={handleSearch}
-          />
-        </header>
-      )}
+    <section id={id} className={styles['table-layout-container']}>
       <section className="layout-content">
         <section className={styles['table-container']}>
           <section className={styles['table-content']}>
