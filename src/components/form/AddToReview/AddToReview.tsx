@@ -4,37 +4,65 @@ import Input from '../../ui/Input';
 import Select from '../../ui/Select';
 import { ratings } from './AddToReview.constants';
 import styles from './AddToReview.module.css';
-import { IReview } from '../../../types/review';
 import useSelectBoxValue from '../../../hooks/useSelectBoxValue';
 import useInputValue from '../../../hooks/useInputValue';
+import { createReview } from '../../../services/review.service';
+import { useMutation } from '@tanstack/react-query';
+import useLoadingStore from '../../../stores/LoadingStore';
+import { toast } from 'react-toastify';
+import { ButtonColor } from '../../ui/Button/Button.constants';
 
 interface IPropTypes {
   id: string;
   menuItemId: string;
+  handleClosePopup: () => void;
 }
 
 const AddToReview = (props: IPropTypes) => {
-  const { id, menuItemId } = props;
+  const { id, menuItemId, handleClosePopup } = props;
 
-  const handleReview = (event: FormEvent) => {
-    event.preventDefault();
+  const { setIsProcessing } = useLoadingStore();
 
-    const form = event.target as HTMLFormElement;
+  const createReviewMutation = useMutation({
+    mutationFn: async (payload: {
+      menuItemId: string;
+      reviewerName: string;
+      rating: number;
+      comment?: string;
+    }) => {
+      return await createReview(payload);
+    },
+  });
 
-    const reviewer_name = form.reviewerName.value as string;
-    if (!reviewer_name) return;
+  const handleReview = async (event: FormEvent) => {
+    try {
+      event.preventDefault();
 
-    const rating = parseInt(form.rating.value);
-    const comment = form.comment.value as string;
+      const form = event.target as HTMLFormElement;
 
-    const payload: IReview = {
-      menu_item_id: menuItemId,
-      reviewer_name,
-      rating,
-      comment,
-    };
+      const reviewerName = form.reviewerName.value as string;
+      if (!reviewerName) return;
 
-    console.log('payload : ', payload);
+      setIsProcessing(true);
+
+      const rating = parseInt(form.rating.value);
+      const comment = form.comment.value as string;
+
+      const payload = {
+        menuItemId,
+        reviewerName,
+        rating,
+        comment,
+      };
+
+      await createReviewMutation.mutateAsync(payload);
+      toast.success('Successfully created review');
+      handleClosePopup();
+    } catch (error: any) {
+      toast.error(error?.message ?? 'Failed to create review');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const reviewerName = useInputValue('');
@@ -45,34 +73,44 @@ const AddToReview = (props: IPropTypes) => {
   // sementara pake select dulu, baru pake stars
   return (
     <form id={id} className={styles.form} onSubmit={handleReview}>
-      <div className={styles['form-content']}>
-        <Input
-          id="reviewerName"
-          label="Reviewer Name"
-          placeholder="Reviewer Name"
-          isRequired
-          value={reviewerName.inputValue}
-          onChange={reviewerName.setInputValue}
-        />
-        <Select
-          id="rating"
-          label="Rating"
-          options={ratings}
-          value={rating.selectBoxValue}
-          onChange={rating.setSelectBoxValue}
-        />
-        <Input
-          id="comment"
-          label="Comment"
-          placeholder="Add a comment (optional)"
-          value={comment.inputValue}
-          onChange={comment.setInputValue}
-        />
-      </div>
-      <div className={styles['form-footer']}>
-        <Button id="submit" type="submit" width="100%">
-          Submit a review
-        </Button>
+      <div className="form">
+        <div className="form-content">
+          <Input
+            id="reviewerName"
+            label="Reviewer Name"
+            placeholder="Reviewer Name"
+            width="100%"
+            isRequired
+            value={reviewerName.inputValue}
+            onChange={reviewerName.setInputValue}
+          />
+          <Select
+            id="rating"
+            label="Rating"
+            width="100%"
+            options={ratings}
+            value={rating.selectBoxValue}
+            onChange={rating.setSelectBoxValue}
+          />
+          <Input
+            id="comment"
+            label="Comment"
+            placeholder="Add a comment (optional)"
+            width="100%"
+            value={comment.inputValue}
+            onChange={comment.setInputValue}
+          />
+        </div>
+        <div className="form-footer">
+          <Button
+            id="submit"
+            type="submit"
+            width="100%"
+            color={ButtonColor.SECONDARY}
+          >
+            Submit a review
+          </Button>
+        </div>
       </div>
     </form>
   );
