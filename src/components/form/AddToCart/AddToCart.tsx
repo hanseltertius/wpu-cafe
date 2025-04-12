@@ -1,47 +1,34 @@
-import { ChangeEvent, FormEvent } from 'react';
+import { ChangeEvent, FormEvent, useEffect } from 'react';
 import styles from './AddToCart.module.css';
 import Button from '../../ui/Button';
 import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import Input from '../../ui/Input';
 import useInputValue from '../../../hooks/useInputValue';
 import Text from '../../ui/Text';
-import { ICart } from '../../../types/cart';
+import useCartStore from '../../../stores/CartStore';
 
 interface IPropTypes {
   id: string;
   menuItemId: string;
   name: string;
-  item?: ICart;
+  handleClosePopup: () => void;
 }
 
 const AddToCart = (prop: IPropTypes) => {
-  /**
-   * Sample Payload :
-   * id
-   * name
-   * quantity
-   * notes (in the form of Text Area that is non-resizable)
-   */
+  const { id, menuItemId, name, handleClosePopup } = prop;
+  const { carts, addItemToCart, editItemInCart } = useCartStore();
 
-  /**
-     * How to create order
-     * 
-     * {
-        "customerName": "John Doe",
-        "tableNumber": 5,
-        "cart": [
-            {
-            "menuItemId": "item-uuid",
-            "quantity": 2,
-            "notes": "Extra hot"
-            }
-        ]
+  const quantity = useInputValue('1');
+  const notes = useInputValue('');
+
+  const cartItem = carts.find((i) => i.menuItemId === menuItemId);
+
+  useEffect(() => {
+    if (!!cartItem) {
+      quantity.setInputValueRaw(`${cartItem.quantity}`);
+      notes.setInputValueRaw(cartItem.notes ?? '');
     }
-     */
-  const { id, menuItemId, name, item } = prop;
-
-  const quantity = useInputValue(!!item ? `${item.quantity}` : '1');
-  const notes = useInputValue(!!item && item.notes ? item.notes : '');
+  }, [cartItem]);
 
   const handleAddToCart = (event: FormEvent) => {
     event.preventDefault();
@@ -58,7 +45,9 @@ const AddToCart = (prop: IPropTypes) => {
       notes,
     };
 
-    console.log('payload : ', payload);
+    if (!!cartItem) editItemInCart(menuItemId, payload);
+    else addItemToCart(payload);
+    handleClosePopup();
   };
 
   const setQuantity = (e: ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +97,7 @@ const AddToCart = (prop: IPropTypes) => {
             id="quantity"
             type="number"
             value={quantity.inputValue}
-            width="50%"
+            width="100%"
             onChange={setQuantity}
           />
           <Button
@@ -124,6 +113,7 @@ const AddToCart = (prop: IPropTypes) => {
         <Input
           id="notes"
           label="Notes"
+          width="100%"
           placeholder="Add a note (optional)"
           value={notes.inputValue}
           onChange={notes.setInputValue}
@@ -132,7 +122,12 @@ const AddToCart = (prop: IPropTypes) => {
       </div>
 
       <div className={styles['form-footer']}>
-        <Button id="submit" type="submit" width="100%">
+        <Button
+          id="submit"
+          type="submit"
+          width="100%"
+          color={ButtonColor.SECONDARY}
+        >
           Add to Cart
         </Button>
       </div>
