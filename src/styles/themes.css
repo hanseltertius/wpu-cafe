@@ -87,6 +87,11 @@
   color: #fffff0;
 }
 
+.primary .transparent,
+.secondary .transparent {
+  color: #fffff0;
+}
+
 .transparent {
   background-color: transparent;
 }
@@ -114,4 +119,8 @@ button.danger {
 
 .dark button.plain {
   border: 1px solid #fffff0;
+}
+
+button.transparent {
+  border: none;
 }
