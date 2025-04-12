@@ -53,7 +53,7 @@ const Popup = (props: IPropTypes) => {
             isIcon
             iconType={ButtonIconType.CLOSE}
             isCircularIcon
-            color={ButtonColor.DANGER}
+            color={ButtonColor.TRANSPARENT}
             onClick={handleClose}
           />
         </div>

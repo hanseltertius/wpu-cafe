@@ -12,6 +12,6 @@
 
   .popup-content-container {
     display: flex;
-    height: calc(100% - 72px);
+    height: calc(100% - 112px);
   }
 }
