@@ -1,4 +1,5 @@
 import {
+  FaBars,
   FaCheck,
   FaCommentAlt,
   FaEdit,
@@ -74,6 +75,8 @@ const Button = (props: IPropTypes) => {
         return <FaCommentAlt />;
       case ButtonIconType.CLOSE:
         return <FaTimes />;
+      case ButtonIconType.HAMBURGER:
+        return <FaBars />;
       default:
         return <FaSearch />;
     }

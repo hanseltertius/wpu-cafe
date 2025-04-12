@@ -9,6 +9,7 @@ enum ButtonIconType {
   REVIEW = 'review',
   CART = 'cart',
   CLOSE = 'close',
+  HAMBURGER = 'hamburger',
 }
 
 enum ButtonColor {

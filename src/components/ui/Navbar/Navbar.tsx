@@ -6,19 +6,22 @@ import styles from './Navbar.module.css';
 import NavItem from '../NavItem';
 import { FaClipboardList, FaCommentAlt, FaPowerOff } from 'react-icons/fa';
 import { removeLocalStorage } from '../../../utils/storage';
+import Button from '../Button';
+import { ButtonColor, ButtonIconType } from '../Button/Button.constants';
 
 const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
     <header className={styles.navbar}>
-      <button
-        className={styles.hamburger}
+      <Button
+        id="hamburger"
         onClick={() => setDrawerOpen(true)}
-        aria-label="Open navigation"
-      >
-        ☰
-      </button>
+        isIcon
+        isCircularIcon
+        iconType={ButtonIconType.HAMBURGER}
+        color={ButtonColor.TRANSPARENT}
+      />
       <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
