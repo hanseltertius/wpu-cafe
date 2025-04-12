@@ -4,6 +4,8 @@ import { ICart } from '../types/cart';
 interface CartStore {
   carts: ICart[];
   addItemToCart: (cart: ICart) => void;
+  incrementItemInCart: (id: string) => void;
+  decrementItemInCart: (id: string) => void;
   editItemInCart: (id: string, cart: ICart) => void;
   removeCart: (id: string) => void;
 }
@@ -27,14 +29,21 @@ const useCartStore = create<CartStore>((set, get) => ({
     });
   },
   decrementItemInCart: (id: string) => {
-    const { carts } = get();
-    set({
-      carts: carts.map((item) =>
-        item.menuItemId === id
-          ? { ...item, quantity: item.quantity - 1 }
-          : item,
-      ),
-    });
+    const { carts, removeCart } = get();
+    const item = carts.find((item) => item.menuItemId === id);
+
+    if (!!item) {
+      if (item.quantity <= 1) removeCart(id);
+      else {
+        set({
+          carts: carts.map((item) =>
+            item.menuItemId === id
+              ? { ...item, quantity: item.quantity - 1 }
+              : item,
+          ),
+        });
+      }
+    }
   },
   editItemInCart: (id: string, cart: ICart) => {
     const { carts } = get();
