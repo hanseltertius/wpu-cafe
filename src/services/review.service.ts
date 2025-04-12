@@ -1,5 +1,4 @@
 import { environment } from '../constants/environment';
-import { IReview } from '../types/review';
 import axiosInstance from '../utils/axiosUtil';
 
 export const getReviews = async (
