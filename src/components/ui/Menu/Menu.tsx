@@ -10,7 +10,7 @@ interface IPropTypes {
 }
 
 const Menu = (props: IPropTypes) => {
-  const { menu } = props;
+  const { menu, handleAddToCart, handleAddNewReview } = props;
 
   return (
     <div className={styles.item} key={menu.id}>
@@ -22,7 +22,9 @@ const Menu = (props: IPropTypes) => {
           <div className={styles['bottom-button-container']}>
             <Button
               id={`cart-${menu.id}`}
-              onClick={() => console.log(menu.id)}
+              onClick={() => {
+                if (!!handleAddToCart) handleAddToCart(menu.id);
+              }}
               isIcon
               iconType={ButtonIconType.CART}
               isCircularIcon
@@ -30,7 +32,9 @@ const Menu = (props: IPropTypes) => {
             />
             <Button
               id={`review-${menu.id}`}
-              onClick={() => console.log(menu.id)}
+              onClick={() => {
+                if (!!handleAddNewReview) handleAddNewReview(menu.id);
+              }}
               isIcon
               iconType={ButtonIconType.REVIEW}
               isCircularIcon
