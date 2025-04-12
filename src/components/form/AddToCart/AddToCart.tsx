@@ -117,7 +117,6 @@ const AddToCart = (prop: IPropTypes) => {
           placeholder="Add a note (optional)"
           value={notes.inputValue}
           onChange={notes.setInputValue}
-          isRequired
         />
       </div>
 
