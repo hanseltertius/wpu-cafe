@@ -6,6 +6,7 @@ import { login } from '../../../services/auth.service';
 import { setLocalStorage } from '../../../utils/storage';
 import { useNavigate } from 'react-router-dom';
 import useInputValue from '../../../hooks/useInputValue';
+import { ButtonColor } from '../../ui/Button/Button.constants';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const Login = () => {
             value={password.inputValue}
             onChange={password.setInputValue}
           />
-          <Button id="login" type="submit">
+          <Button id="login" type="submit" color={ButtonColor.PRIMARY}>
             Login
           </Button>
         </form>
