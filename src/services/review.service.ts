@@ -22,8 +22,13 @@ export const getReviews = async (
   return result;
 };
 
-export const createReview = async (payload: IReview) => {
-  const url = `${environment.API_URL}/orders`;
+export const createReview = async (payload: {
+  menuItemId: string;
+  reviewerName: string;
+  rating: number;
+  comment?: string;
+}) => {
+  const url = `${environment.API_URL}/reviews`;
   const result = await axiosInstance.post(url, payload);
 
   return result;
