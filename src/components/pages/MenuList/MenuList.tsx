@@ -9,7 +9,7 @@ import { FormEvent, useState } from 'react';
 import useInputValue from '../../../hooks/useInputValue';
 import useSelectBoxValue from '../../../hooks/useSelectBoxValue';
 import Input from '../../ui/Input';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { getMenus } from '../../../services/menu.service';
 import { IMenu } from '../../../types/menu';
 import Menu from '../../ui/Menu';
@@ -20,10 +20,14 @@ import AddToReview from '../../form/AddToReview';
 import Loading from '../../ui/Loading';
 import useLoadingStore from '../../../stores/LoadingStore';
 import AddToCart from '../../form/AddToCart';
+import { createOrder } from '../../../services/order.service';
+import { ICustomerInfo } from '../../../types/customerInfo';
+import { toast } from 'react-toastify';
+import { useAuthRedirectOnError } from '../../../hooks/useAuthRedirectOnError';
 
 const MenuList = () => {
   const { isDesktop } = useScreenStore();
-  const { isProcessing } = useLoadingStore();
+  const { isProcessing, setIsProcessing } = useLoadingStore();
 
   const navigate = useNavigate();
 
@@ -67,14 +71,41 @@ const MenuList = () => {
     } else return [];
   };
 
+  const createOrderMutation = useMutation({
+    mutationFn: async (payload: ICustomerInfo) => {
+      return await createOrder(payload);
+    },
+  });
+
   const handleEditButton = (id: string) => {
     handleAddToCart(id);
   };
 
-  const handleCreateOrder = (event: FormEvent) => {
-    event.preventDefault();
+  const handleCreateOrder = async (event: FormEvent) => {
+    try {
+      event.preventDefault();
+      if (cartStore.carts.length === 0) return;
 
-    if (cartStore.carts.length === 0) return;
+      const customerInputValue = customerName.inputValue;
+      if (!customerInputValue) return;
+
+      setIsProcessing(true);
+      const payload: ICustomerInfo = {
+        customerName: customerInputValue,
+        tableNumber: parseInt(tableNumber.selectBoxValue),
+        cart: cartStore.carts,
+      };
+      await createOrderMutation.mutateAsync(payload);
+      toast.success('Order marked as completed!');
+      customerName.setInputValueRaw('');
+      tableNumber.setSelectBoxValueRaw('');
+      cartStore.clearAllCarts();
+    } catch (error: any) {
+      toast.error(error?.message ?? 'Failed to complete order');
+      useAuthRedirectOnError(true, error);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   const handleAddNewReview = (id: string) => {

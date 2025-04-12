@@ -8,6 +8,7 @@ interface CartStore {
   decrementItemInCart: (id: string) => void;
   editItemInCart: (id: string, cart: ICart) => void;
   removeCart: (id: string) => void;
+  clearAllCarts: () => void;
 }
 
 const useCartStore = create<CartStore>((set, get) => ({
@@ -56,6 +57,9 @@ const useCartStore = create<CartStore>((set, get) => ({
     set({
       carts: carts.filter((item) => item.menuItemId !== id),
     });
+  },
+  clearAllCarts: () => {
+    set({ carts: [] });
   },
 }));
 
