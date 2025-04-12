@@ -15,10 +15,7 @@ interface IPropTypes {
   cartList: ICart[];
   onCustomerNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onTableNumberChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-  handlePlusButton: () => void;
-  handleMinusButton: () => void;
-  handleEditButton: () => void;
-  handleDeleteButton: () => void;
+  handleEditButton: (id: string) => void;
   handleCreateOrder: (event: FormEvent) => void;
 }
 
@@ -30,10 +27,7 @@ const CustomerInfo = (props: IPropTypes) => {
     cartList,
     onCustomerNameChange,
     onTableNumberChange,
-    handlePlusButton,
-    handleMinusButton,
     handleEditButton,
-    handleDeleteButton,
     handleCreateOrder,
   } = props;
 
@@ -72,13 +66,7 @@ const CustomerInfo = (props: IPropTypes) => {
                       : ''
                   }
                 >
-                  <Cart
-                    cart={cart}
-                    handleMinusButton={handleMinusButton}
-                    handlePlusButton={handlePlusButton}
-                    handleEditButton={handleEditButton}
-                    handleDeleteButton={handleDeleteButton}
-                  />
+                  <Cart cart={cart} handleEditButton={handleEditButton} />
                 </div>
               ))
             ) : (

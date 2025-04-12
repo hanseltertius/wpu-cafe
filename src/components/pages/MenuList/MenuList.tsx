@@ -67,13 +67,9 @@ const MenuList = () => {
     } else return [];
   };
 
-  const handlePlusButton = () => {};
-
-  const handleMinusButton = () => {};
-
-  const handleEditButton = () => {};
-
-  const handleDeleteButton = () => {};
+  const handleEditButton = (id: string) => {
+    handleAddToCart(id);
+  };
 
   const handleCreateOrder = (event: FormEvent) => {
     event.preventDefault();
@@ -159,10 +155,7 @@ const MenuList = () => {
               cartList={cartStore.carts}
               onCustomerNameChange={customerName.setInputValue}
               onTableNumberChange={tableNumber.setSelectBoxValue}
-              handlePlusButton={handlePlusButton}
-              handleMinusButton={handleMinusButton}
               handleEditButton={handleEditButton}
-              handleDeleteButton={handleDeleteButton}
               handleCreateOrder={handleCreateOrder}
             />
           </aside>

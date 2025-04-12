@@ -2,23 +2,18 @@ import styles from './Cart.module.css';
 import { ICart } from '../../../types/cart';
 import Button from '../Button';
 import { ButtonColor, ButtonIconType } from '../Button/Button.constants';
+import useCartStore from '../../../stores/CartStore';
 
 interface IPropTypes {
   cart: ICart;
-  handlePlusButton: () => void;
-  handleMinusButton: () => void;
-  handleEditButton: () => void;
-  handleDeleteButton: () => void;
+  handleEditButton: (id: string) => void;
 }
 
 const Cart = (props: IPropTypes) => {
-  const {
-    cart,
-    handlePlusButton,
-    handleMinusButton,
-    handleEditButton,
-    handleDeleteButton,
-  } = props;
+  const { cart, handleEditButton } = props;
+
+  const { decrementItemInCart, incrementItemInCart, removeCart } =
+    useCartStore();
 
   return (
     <div className={styles.container}>
@@ -28,7 +23,9 @@ const Cart = (props: IPropTypes) => {
           <Button
             id="minus"
             isIcon
-            onClick={handleMinusButton}
+            onClick={() => {
+              if (!!cart.menuItemId) decrementItemInCart(cart.menuItemId);
+            }}
             iconType={ButtonIconType.MINUS}
             color={ButtonColor.DANGER}
             className={styles.small}
@@ -37,7 +34,9 @@ const Cart = (props: IPropTypes) => {
           <Button
             id="plus"
             isIcon
-            onClick={handlePlusButton}
+            onClick={() => {
+              if (!!cart.menuItemId) incrementItemInCart(cart.menuItemId);
+            }}
             iconType={ButtonIconType.PLUS}
             color={ButtonColor.SUCCESS}
             className={styles.small}
@@ -55,7 +54,9 @@ const Cart = (props: IPropTypes) => {
             isIcon
             isCircularIcon
             iconType={ButtonIconType.EDIT}
-            onClick={handleEditButton}
+            onClick={() => {
+              if (!!cart.menuItemId) handleEditButton(cart.menuItemId);
+            }}
             className={styles['icon-small']}
           />
           <Button
@@ -64,7 +65,9 @@ const Cart = (props: IPropTypes) => {
             isCircularIcon
             iconType={ButtonIconType.DELETE}
             color={ButtonColor.DANGER}
-            onClick={handleDeleteButton}
+            onClick={() => {
+              if (!!cart.menuItemId) removeCart(cart.menuItemId);
+            }}
             className={styles['icon-small']}
           />
         </div>
