@@ -20,12 +20,12 @@ const MenuDetail = () => {
 
   useEffect(() => {
     return () => {
-      queryClient.invalidateQueries({ queryKey: ['orderDetail'] });
+      queryClient.invalidateQueries({ queryKey: ['menuDetail'] });
     };
   }, []);
 
   const { data, isLoading } = useQuery({
-    queryKey: ['orderDetail', menuId],
+    queryKey: ['menuDetail', menuId],
     queryFn: () => getMenuDetail(menuId),
     staleTime: 0,
   });
@@ -43,10 +43,7 @@ const MenuDetail = () => {
   const getMenuDetailReviews = () => {
     const menuDetail = getMenuDetailData();
 
-    if (!!menuDetail) {
-      const reviews = menuDetail.reviews;
-      if (!!reviews) return !!reviews.items ? reviews.items : [];
-    } else return [];
+    return menuDetail?.reviews?.items ?? [];
   };
 
   return (

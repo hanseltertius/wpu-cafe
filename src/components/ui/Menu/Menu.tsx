@@ -7,13 +7,20 @@ interface IPropTypes {
   menu: IMenu;
   handleAddToCart?: (id: string) => void;
   handleAddNewReview?: (id: string) => void;
+  handleClickMenu?: (id: string) => void;
 }
 
 const Menu = (props: IPropTypes) => {
-  const { menu, handleAddToCart, handleAddNewReview } = props;
+  const { menu, handleAddToCart, handleAddNewReview, handleClickMenu } = props;
 
   return (
-    <div className={styles.item} key={menu.id}>
+    <div
+      className={styles.item}
+      key={menu.id}
+      onClick={() => {
+        if (!!handleClickMenu) handleClickMenu(menu.id);
+      }}
+    >
       <img src={menu.image_url} alt={menu.name} className={styles.image} />
       <div className={styles.content}>
         <h3>{menu.name}</h3>

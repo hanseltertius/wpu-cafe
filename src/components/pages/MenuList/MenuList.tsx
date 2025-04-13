@@ -118,6 +118,10 @@ const MenuList = () => {
     setIsReviewOpen(false);
   };
 
+  const handleClickMenu = (id: string) => {
+    navigate(`${id}`);
+  };
+
   const handleAddToCart = (id: string) => {
     const menu = getMenuList().find((i: IMenu) => i.id === id);
 
@@ -171,6 +175,7 @@ const MenuList = () => {
                     menu={item}
                     handleAddNewReview={handleAddNewReview}
                     handleAddToCart={handleAddToCart}
+                    handleClickMenu={handleClickMenu}
                   />
                 </div>
               ))}
