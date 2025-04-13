@@ -8,8 +8,8 @@
   }
 
   @media (min-width: 1024px) {
-    flex: 6;
-    margin-bottom: 16px;
+    flex: 2;
+    margin-right: 16px;
   }
 
   .menu-detail-content {
@@ -17,11 +17,13 @@
     flex-direction: column;
     gap: 8px;
 
+    /* TODO : image nya di bikin responsive (mobile / web) */
     .image {
       width: 300px;
       height: 300px;
       object-fit: fill;
       justify-content: center;
+      align-self: center;
     }
   }
 }
@@ -30,7 +32,7 @@
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
-    flex: 4;
+    flex: 3;
     min-height: 0;
   }
 

@@ -55,7 +55,7 @@ const MenuDetail = () => {
           Back
         </Button>
       </header>
-      <section className="layout-content">
+      <section className="layout-content horizontal">
         <section className={styles['menu-detail-information-container']}>
           <div></div>
           <section className="scroll-wrapper">

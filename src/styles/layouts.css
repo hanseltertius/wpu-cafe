@@ -1,4 +1,6 @@
 /* Layout */
+
+/* TODO : layout yang ada navbar nya ada juga yang tidak */
 .layout,
 .form {
   display: flex;
@@ -13,6 +15,11 @@
   .form-footer {
     display: flex;
     flex-direction: column;
+  }
+
+  .layout-content.horizontal {
+    display: flex;
+    flex-direction: row;
   }
 
   .layout-header,
