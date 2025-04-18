@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useScreenStore from '../../../stores/ScreenStore';
 import styles from './MenuDetail.module.css';
-import { ButtonColor } from '../../ui/Button/Button.constants';
+import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import Button from '../../ui/Button';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getMenuDetail } from '../../../services/menu.service';
@@ -85,7 +85,13 @@ const MenuDetail = () => {
         )}
         {!isDesktop && (
           <div className="bottom-button-container">
-            <div>Test</div>
+            <Button
+              id="open-reviews"
+              isIcon
+              isCircularIcon
+              iconType={ButtonIconType.REVIEW}
+              color={ButtonColor.SECONDARY}
+            />
           </div>
         )}
       </section>

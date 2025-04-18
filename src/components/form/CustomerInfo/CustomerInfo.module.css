@@ -3,7 +3,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: lightgray;
   padding: 16px;
 
   .form-content {
@@ -31,10 +30,7 @@
         flex-direction: column;
         width: 100%;
         height: 100%;
-
-        .cart-item-with-separator {
-          border-bottom: 1px solid black;
-        }
+        padding: 8px;
       }
 
       .cart-empty-container {

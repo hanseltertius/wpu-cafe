@@ -58,14 +58,7 @@ const CustomerInfo = (props: IPropTypes) => {
           <div className={styles['cart-container']}>
             {cartList.length > 0 ? (
               cartList.map((cart: ICart, index: number) => (
-                <div
-                  key={cart.id}
-                  className={
-                    index < cartList.length - 1
-                      ? styles['cart-item-with-separator']
-                      : ''
-                  }
-                >
+                <div key={cart.id}>
                   <Cart cart={cart} handleEditButton={handleEditButton} />
                 </div>
               ))

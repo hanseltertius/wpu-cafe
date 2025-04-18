@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import useScreenStore from '../../../stores/ScreenStore';
 import Button from '../../ui/Button';
-import { ButtonColor } from '../../ui/Button/Button.constants';
+import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import styles from './MenuList.module.css';
 import Select from '../../ui/Select';
 import { options } from './MenuList.constants';
@@ -28,6 +28,8 @@ import { useAuthRedirectOnError } from '../../../hooks/useAuthRedirectOnError';
 const MenuList = () => {
   const { isDesktop } = useScreenStore();
   const { isProcessing, setIsProcessing } = useLoadingStore();
+
+  console.log('isDesktop : ', isDesktop);
 
   const navigate = useNavigate();
 
@@ -119,7 +121,7 @@ const MenuList = () => {
   };
 
   const handleClickMenu = (id: string) => {
-    navigate(`${id}`);
+    // navigate(`${id}`);
   };
 
   const handleAddToCart = (id: string) => {
@@ -199,7 +201,13 @@ const MenuList = () => {
       </section>
       {!isDesktop && (
         <div className="bottom-button-container">
-          <div>Test</div>
+          <Button
+            id="open-customer-info"
+            isIcon
+            isCircularIcon
+            color={ButtonColor.SECONDARY}
+            iconType={ButtonIconType.SHOP}
+          />
         </div>
       )}
       <Popup

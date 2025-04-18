@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import useScreenStore from '../../../stores/ScreenStore';
 import Button from '../../ui/Button';
-import { ButtonColor } from '../../ui/Button/Button.constants';
+import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
 import styles from './OrderDetail.module.css';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getOrderDetail } from '../../../services/order.service';
@@ -80,7 +80,13 @@ const OrderDetail = () => {
         </section>
         {!isDesktop && (
           <div className="bottom-button-container">
-            <Button id="open-order-info" isIcon isCircularIcon />
+            <Button
+              id="open-order-info"
+              isIcon
+              isCircularIcon
+              color={ButtonColor.SECONDARY}
+              iconType={ButtonIconType.INFO}
+            />
           </div>
         )}
       </section>
