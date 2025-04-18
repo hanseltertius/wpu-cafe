@@ -1,10 +1,10 @@
 .container {
   padding: 8px;
-  background: lightgray;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   gap: 8px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
   .rating {
     display: flex;
@@ -16,5 +16,6 @@
   .comment {
     background: #fff;
     padding: 8px;
+    border: 1px solid black;
   }
 }
