@@ -4,9 +4,11 @@ import {
   FaCommentAlt,
   FaEdit,
   FaExternalLinkAlt,
+  FaInfo,
   FaMinus,
   FaPlus,
   FaSearch,
+  FaShoppingBag,
   FaShoppingCart,
   FaTimes,
   FaTrashAlt,
@@ -77,6 +79,10 @@ const Button = (props: IPropTypes) => {
         return <FaTimes />;
       case ButtonIconType.HAMBURGER:
         return <FaBars />;
+      case ButtonIconType.SHOP:
+        return <FaShoppingBag />;
+      case ButtonIconType.INFO:
+        return <FaInfo />;
       default:
         return <FaSearch />;
     }
