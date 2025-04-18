@@ -57,18 +57,15 @@ const MenuDetail = () => {
       </header>
       <section className="layout-content horizontal">
         <section className={styles['menu-detail-information-container']}>
-          <div></div>
           <section className="scroll-wrapper">
-            <section className={styles['menu-detail-information']}>
-              {!!data && !!data.menuItem && (
-                <div className={styles['menu-detail-content']}>
-                  <img src={data.menuItem.image_url} className={styles.image} />
-                  <h2>{data.menuItem.name}</h2>
-                  <div>{data.menuItem.description}</div>
-                  <div>${data.menuItem.price}</div>
-                </div>
-              )}
-            </section>
+            {!!data && !!data.menuItem && (
+              <div className={styles['menu-detail-content']}>
+                <img src={data.menuItem.image_url} className={styles.image} />
+                <h2>{data.menuItem.name}</h2>
+                <div>{data.menuItem.description}</div>
+                <div>${data.menuItem.price}</div>
+              </div>
+            )}
           </section>
         </section>
         {isDesktop && (
@@ -77,7 +74,9 @@ const MenuDetail = () => {
             <section className="scroll-wrapper">
               <section className={styles['menu-detail-reviews']}>
                 {getMenuDetailReviews().map((item: IReview) => (
-                  <Review review={item} />
+                  <div key={item.id}>
+                    <Review review={item} />
+                  </div>
                 ))}
               </section>
             </section>
