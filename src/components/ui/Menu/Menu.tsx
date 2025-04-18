@@ -14,13 +14,7 @@ const Menu = (props: IPropTypes) => {
   const { menu, handleAddToCart, handleAddNewReview, handleClickMenu } = props;
 
   return (
-    <div
-      className={styles.item}
-      key={menu.id}
-      onClick={() => {
-        if (!!handleClickMenu) handleClickMenu(menu.id);
-      }}
-    >
+    <div className={styles.item} key={menu.id}>
       <img src={menu.image_url} alt={menu.name} className={styles.image} />
       <div className={styles.content}>
         <h3>{menu.name}</h3>
@@ -46,6 +40,16 @@ const Menu = (props: IPropTypes) => {
               iconType={ButtonIconType.REVIEW}
               isCircularIcon
               color={ButtonColor.SECONDARY}
+            />
+            <Button
+              id={`detail-${menu.id}`}
+              onClick={() => {
+                if (!!handleClickMenu) handleClickMenu(menu.id);
+              }}
+              isIcon
+              iconType={ButtonIconType.REDIRECT}
+              isCircularIcon
+              color={ButtonColor.TERTIARY}
             />
           </div>
         </div>

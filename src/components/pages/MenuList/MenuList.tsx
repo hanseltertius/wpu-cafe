@@ -121,7 +121,7 @@ const MenuList = () => {
   };
 
   const handleClickMenu = (id: string) => {
-    // navigate(`${id}`);
+    navigate(`${id}`);
   };
 
   const handleAddToCart = (id: string) => {
