@@ -17,6 +17,7 @@ enum ButtonIconType {
 enum ButtonColor {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
+  TERTIARY = 'tertiary',
   DANGER = 'danger',
   SUCCESS = 'success',
   PLAIN = 'plain',

@@ -67,6 +67,11 @@
   color: #fffff0;
 }
 
+.tertiary {
+  background-color: #deac76;
+  color: #fffff0;
+}
+
 .success {
   background-color: #28a745;
   color: #fffff0;
@@ -88,7 +93,8 @@
 }
 
 .primary .transparent,
-.secondary .transparent {
+.secondary .transparent,
+.tertiary .transparent {
   color: #fffff0;
 }
 
@@ -103,6 +109,10 @@ button.primary {
 
 button.secondary {
   border: 1px solid #d99937;
+}
+
+button.tertiary {
+  border: 1px solid #deac76;
 }
 
 button.success {
