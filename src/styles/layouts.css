@@ -201,3 +201,45 @@ div[data-column-id='action-button'][role='cell'] {
   z-index: 0;
   border-left: 1px solid lightgray;
 }
+
+/* #region Bottom Modal */
+.react-modal-sheet-header {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.react-modal-sheet-container {
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
+}
+
+.react-modal-sheet-drag-indicator {
+  background-color: black !important;
+}
+
+.react-modal-sheet-backdrop {
+  pointer-events: auto !important;
+}
+
+.modal-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+
+.modal-header-title-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.modal-header-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* #endregion */

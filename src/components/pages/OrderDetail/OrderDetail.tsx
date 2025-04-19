@@ -10,12 +10,16 @@ import Loading from '../../ui/Loading';
 import OrderItem from '../../ui/OrderItem';
 import { ICart } from '../../../types/cart';
 import { useEffect } from 'react';
+import useBottomModalStore from '../../../stores/BottomModalStore';
+import BottomModal from '../../modal/BottomModal';
 
 const OrderDetail = () => {
   const queryClient = useQueryClient();
 
   const { id } = useParams();
   const { isDesktop } = useScreenStore();
+
+  const { setIsBottomModalOpen } = useBottomModalStore();
 
   const orderId = !!id ? id : '0';
 
@@ -84,11 +88,23 @@ const OrderDetail = () => {
               id="open-order-info"
               isIcon
               isCircularIcon
+              onClick={() => setIsBottomModalOpen(true)}
               color={ButtonColor.SECONDARY}
               iconType={ButtonIconType.INFO}
             />
           </div>
         )}
+
+        <BottomModal title="Customer Information" height="40vh">
+          <section className={styles['order-detail-information-container']}>
+            <section className="scroll-wrapper">
+              <OrderDetailInfo
+                id={`order-detail-${orderId}`}
+                orderItem={getOrderDetailData()}
+              />
+            </section>
+          </section>
+        </BottomModal>
       </section>
     </main>
   );

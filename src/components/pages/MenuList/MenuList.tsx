@@ -24,6 +24,8 @@ import { createOrder } from '../../../services/order.service';
 import { ICustomerInfo } from '../../../types/customerInfo';
 import { toast } from 'react-toastify';
 import { useAuthRedirectOnError } from '../../../hooks/useAuthRedirectOnError';
+import useBottomModalStore from '../../../stores/BottomModalStore';
+import BottomModal from '../../modal/BottomModal';
 
 const MenuList = () => {
   const { isDesktop } = useScreenStore();
@@ -46,6 +48,8 @@ const MenuList = () => {
   const [menuName, setMenuName] = useState('');
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isAddToCartOpen, setIsAddToCartOpen] = useState(false);
+
+  const { setIsBottomModalOpen } = useBottomModalStore();
 
   const { data } = useQuery({
     queryKey: ['menuList', keyword, categoryInput.selectBoxValue],
@@ -102,6 +106,7 @@ const MenuList = () => {
       customerName.setInputValueRaw('');
       tableNumber.setSelectBoxValueRaw('');
       cartStore.clearAllCarts();
+      if (!isDesktop) setIsBottomModalOpen(false);
     } catch (error: any) {
       toast.error(error?.message ?? 'Failed to complete order');
       useAuthRedirectOnError(true, error);
@@ -205,6 +210,7 @@ const MenuList = () => {
             id="open-customer-info"
             isIcon
             isCircularIcon
+            onClick={() => setIsBottomModalOpen(true)}
             color={ButtonColor.SECONDARY}
             iconType={ButtonIconType.SHOP}
           />
@@ -238,6 +244,19 @@ const MenuList = () => {
           handleClosePopup={handleCloseAddToCart}
         />
       </Popup>
+
+      <BottomModal title="Customer Information" height="80vh">
+        <CustomerInfo
+          id="customer-info-non-popup"
+          customerName={customerName.inputValue}
+          tableNumber={tableNumber.selectBoxValue}
+          cartList={cartStore.carts}
+          onCustomerNameChange={customerName.setInputValue}
+          onTableNumberChange={tableNumber.setSelectBoxValue}
+          handleEditButton={handleEditButton}
+          handleCreateOrder={handleCreateOrder}
+        />
+      </BottomModal>
     </main>
   );
 };

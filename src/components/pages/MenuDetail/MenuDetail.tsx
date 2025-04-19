@@ -9,12 +9,16 @@ import { useEffect } from 'react';
 import Loading from '../../ui/Loading';
 import { IReview } from '../../../types/review';
 import Review from '../../ui/Review';
+import BottomModal from '../../modal/BottomModal';
+import useBottomModalStore from '../../../stores/BottomModalStore';
 
 const MenuDetail = () => {
   const queryClient = useQueryClient();
 
   const { id } = useParams();
   const { isDesktop } = useScreenStore();
+
+  const { setIsBottomModalOpen } = useBottomModalStore();
 
   const menuId = !!id ? id : '0';
 
@@ -88,11 +92,22 @@ const MenuDetail = () => {
               id="open-reviews"
               isIcon
               isCircularIcon
+              onClick={() => setIsBottomModalOpen(true)}
               iconType={ButtonIconType.REVIEW}
               color={ButtonColor.SECONDARY}
             />
           </div>
         )}
+
+        <BottomModal title="Reviews" height="70vh">
+          <section className={styles['menu-detail-reviews']}>
+            {getMenuDetailReviews().map((item: IReview) => (
+              <div key={item.id}>
+                <Review review={item} />
+              </div>
+            ))}
+          </section>
+        </BottomModal>
       </section>
     </main>
   );
