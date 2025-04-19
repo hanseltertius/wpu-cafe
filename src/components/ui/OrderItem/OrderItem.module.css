@@ -1,12 +1,11 @@
 .container {
-  background: lightgray;
   padding: 12px;
-  border-radius: 4px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 16px;
   gap: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 
   .image {
     width: 100px;
