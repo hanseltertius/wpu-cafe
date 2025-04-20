@@ -31,26 +31,23 @@ const Table = <T,>(props: IPropTypes<T>) => {
   // set height, will use default from here
   return (
     <section id={id} className={styles['table-layout-container']}>
-      <section className="layout-content">
+      <section className="content">
         <section className={styles['table-container']}>
-          <section className={styles['table-content']}>
-            <DataTable
-              columns={columns}
-              data={data}
-              progressPending={isLoading}
-              fixedHeader
-              pagination
-              paginationServer
-              paginationTotalRows={paginationTotalRows}
-              paginationDefaultPage={paginationDefaultPerPage}
-              paginationPerPage={paginationPerPage}
-              paginationRowsPerPageOptions={[5, 10, 20, 50]}
-              onSort={handleSort}
-              onChangePage={handlePageChange}
-              onChangeRowsPerPage={handlePerRowsChange}
-              fixedHeaderScrollHeight="calc(100vh - 164px)"
-            />
-          </section>
+          <DataTable
+            columns={columns}
+            data={data}
+            progressPending={isLoading}
+            fixedHeader
+            pagination
+            paginationServer
+            paginationTotalRows={paginationTotalRows}
+            paginationDefaultPage={paginationDefaultPerPage}
+            paginationPerPage={paginationPerPage}
+            paginationRowsPerPageOptions={[5, 10, 20, 50]}
+            onSort={handleSort}
+            onChangePage={handlePageChange}
+            onChangeRowsPerPage={handlePerRowsChange}
+          />
         </section>
       </section>
     </section>

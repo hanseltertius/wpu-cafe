@@ -8,14 +8,8 @@
 }
 
 .table-container {
-  display: 'flex';
-  flex-direction: 'column';
-  height: calc(100vh - 128px);
-
-  .table-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow-y: hidden;
-  }
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
 }
