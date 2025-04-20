@@ -53,20 +53,22 @@ const OrderDetail = () => {
   return (
     <main className="layout">
       {isLoading && <Loading />}
-      <header className="layout-header">
+      <header className="header">
         <h1>Order Detail</h1>
         <Button id="back" onClick={handleBackButton} color={ButtonColor.DANGER}>
           Back
         </Button>
       </header>
-      <section className="layout-content">
+      <section className="content">
         {isDesktop && (
           <section className={styles['order-detail-information-container']}>
-            <section className="scroll-wrapper">
-              <OrderDetailInfo
-                id={`order-detail-${orderId}`}
-                orderItem={getOrderDetailData()}
-              />
+            <section className="card-item" style={{ height: '100%' }}>
+              <section className="card-scroll-wrapper">
+                <OrderDetailInfo
+                  id={`order-detail-${orderId}`}
+                  orderItem={getOrderDetailData()}
+                />
+              </section>
             </section>
           </section>
         )}
@@ -95,7 +97,7 @@ const OrderDetail = () => {
           </div>
         )}
 
-        <BottomModal title="Customer Information" height="40vh">
+        <BottomModal title="Customer Information" height="400px">
           <section className={styles['order-detail-information-container']}>
             <section className="scroll-wrapper">
               <OrderDetailInfo

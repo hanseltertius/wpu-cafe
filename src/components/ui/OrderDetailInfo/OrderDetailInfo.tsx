@@ -43,7 +43,7 @@ const OrderDetailInfo = (props: IPropTypes) => {
 
   return (
     <div id={id} className={styles.container}>
-      <div className="grid">
+      <div className="grid" style={{ height: '100%', alignItems: 'center' }}>
         {informationList.map((info) => {
           return (
             <Text id={info.id} label={info.label} key={info.id}>

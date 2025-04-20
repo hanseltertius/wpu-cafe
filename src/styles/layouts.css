@@ -33,6 +33,7 @@
 
 /* #region Scroll Wrapper */
 .scroll-wrapper {
+  display: flex;
   flex: 1;
   flex-direction: column;
   overflow-y: auto;
@@ -252,6 +253,7 @@
 .card-item-content-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 8px;
 }
 
@@ -261,6 +263,7 @@
 }
 
 .card-scroll-wrapper {
+  display: flex;
   flex: 1;
   flex-direction: column;
   overflow-y: auto;
