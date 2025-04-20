@@ -63,10 +63,10 @@ const MenuDetail = () => {
       <section className="content horizontal">
         <section className={styles['menu-detail-information-container']}>
           <section className="card-item" style={{ height: '100%' }}>
-            <section className="card-scroll-wrapper">
-              {!!data && !!data.menuItem && (
-                <div className={styles['menu-detail-information']}>
-                  <img src={data.menuItem.image_url} className={styles.image} />
+            {!!data && !!data.menuItem && (
+              <div className={styles['menu-detail-information']}>
+                <img src={data.menuItem.image_url} className={styles.image} />
+                <section className="card-scroll-wrapper">
                   <div className={styles['menu-detail-content']}>
                     <Text
                       id={`${data.menuItem.id}-title`}
@@ -82,9 +82,9 @@ const MenuDetail = () => {
                     </Text>
                     <div>{data.menuItem.description}</div>
                   </div>
-                </div>
-              )}
-            </section>
+                </section>
+              </div>
+            )}
           </section>
         </section>
         {isDesktop && (
