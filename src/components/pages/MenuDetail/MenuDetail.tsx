@@ -11,6 +11,7 @@ import { IReview } from '../../../types/review';
 import Review from '../../ui/Review';
 import BottomModal from '../../modal/BottomModal';
 import useBottomModalStore from '../../../stores/BottomModalStore';
+import Text from '../../ui/Text';
 
 const MenuDetail = () => {
   const queryClient = useQueryClient();
@@ -53,23 +54,37 @@ const MenuDetail = () => {
   return (
     <main className="layout">
       {isLoading && <Loading />}
-      <header className="layout-header">
+      <header className="header">
         <h1>Menu Detail</h1>
         <Button id="back" onClick={handleBackButton} color={ButtonColor.DANGER}>
           Back
         </Button>
       </header>
-      <section className="layout-content horizontal">
+      <section className="content horizontal">
         <section className={styles['menu-detail-information-container']}>
-          <section className="scroll-wrapper">
-            {!!data && !!data.menuItem && (
-              <div className={styles['menu-detail-content']}>
-                <img src={data.menuItem.image_url} className={styles.image} />
-                <h2>{data.menuItem.name}</h2>
-                <div>{data.menuItem.description}</div>
-                <div>${data.menuItem.price}</div>
-              </div>
-            )}
+          <section className="card-item" style={{ height: '100%' }}>
+            <section className="card-scroll-wrapper">
+              {!!data && !!data.menuItem && (
+                <div className={styles['menu-detail-information']}>
+                  <img src={data.menuItem.image_url} className={styles.image} />
+                  <div className={styles['menu-detail-content']}>
+                    <Text
+                      id={`${data.menuItem.id}-title`}
+                      className="card-item-title"
+                    >
+                      {data.menuItem.name}
+                    </Text>
+                    <Text
+                      id={`${data.menuItem.id}-price`}
+                      className="card-item-subtitle"
+                    >
+                      <div>${data.menuItem.price}</div>
+                    </Text>
+                    <div>{data.menuItem.description}</div>
+                  </div>
+                </div>
+              )}
+            </section>
           </section>
         </section>
         {isDesktop && (
@@ -100,12 +115,14 @@ const MenuDetail = () => {
         )}
 
         <BottomModal title="Reviews" height="70vh">
-          <section className={styles['menu-detail-reviews']}>
-            {getMenuDetailReviews().map((item: IReview) => (
-              <div key={item.id}>
-                <Review review={item} />
-              </div>
-            ))}
+          <section className="scroll-wrapper">
+            <section className={styles['menu-detail-reviews']}>
+              {getMenuDetailReviews().map((item: IReview) => (
+                <div key={item.id}>
+                  <Review review={item} />
+                </div>
+              ))}
+            </section>
           </section>
         </BottomModal>
       </section>
