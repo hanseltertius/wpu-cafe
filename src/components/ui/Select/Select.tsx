@@ -28,7 +28,7 @@ const Select = (props: IPropTypes) => {
     displayType = SelectBoxDisplayType.NAME,
   } = props;
 
-  const selectClassName = `${className}`;
+  const selectClassName = `select ${className}`;
 
   const getOptionDisplay = (
     option: IOption,
@@ -47,7 +47,7 @@ const Select = (props: IPropTypes) => {
   };
 
   return (
-    <div className={styles['select-wrapper']}>
+    <div className="select-container">
       {label && (
         <label className="label" htmlFor={id}>
           {label}

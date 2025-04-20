@@ -43,7 +43,7 @@ const Button = (props: IPropTypes) => {
     width = 'auto',
   } = props;
 
-  let buttonClassName = `${className}`;
+  let buttonClassName = `button ${className}`;
   let style = {};
 
   if (isIcon) {

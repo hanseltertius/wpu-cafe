@@ -133,4 +133,5 @@ button.danger {
 
 button.transparent {
   border: none;
+  box-shadow: none;
 }

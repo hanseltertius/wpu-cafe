@@ -39,7 +39,7 @@ const Input = (props: IPropTypes) => {
   const mandatoryBorderClass =
     isRequired && value.length === 0 ? 'mandatory-border' : '';
 
-  const inputClassName = `${mandatoryBorderClass} ${className}`;
+  const inputClassName = `input ${mandatoryBorderClass} ${className}`;
 
   const getErrorMessage = (label?: string) => {
     return label && label.length > 0
@@ -50,7 +50,7 @@ const Input = (props: IPropTypes) => {
   const errorId = `${id}-error`;
 
   return (
-    <div className={`${styles['input-wrapper']}`}>
+    <div className="input-container">
       {label && (
         <label className="label" htmlFor={id}>
           {label}
