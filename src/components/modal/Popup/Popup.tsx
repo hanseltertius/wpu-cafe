@@ -3,6 +3,7 @@ import ReactModal from 'react-modal';
 import styles from './Popup.module.css';
 import Button from '../../ui/Button';
 import { ButtonColor, ButtonIconType } from '../../ui/Button/Button.constants';
+import Text from '../../ui/Text';
 
 interface IPropTypes {
   isOpen: boolean;
@@ -45,9 +46,11 @@ const Popup = (props: IPropTypes) => {
         },
       }}
     >
-      <div className={styles['popup-container']}>
-        <div className={`${styles['popup-header-container']} primary`}>
-          <h1>{title}</h1>
+      <div className="popup-form">
+        <div className="header primary">
+          <Text id="title" className="form-title">
+            {title}
+          </Text>
           <Button
             id="close-popup"
             isIcon
@@ -57,7 +60,7 @@ const Popup = (props: IPropTypes) => {
             onClick={handleClose}
           />
         </div>
-        <div className={styles['popup-content-container']}>{children}</div>
+        <div className="content">{children}</div>
       </div>
     </ReactModal>
   );
