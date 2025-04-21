@@ -99,12 +99,10 @@ const OrderDetail = () => {
 
         <BottomModal title="Customer Information" height="400px">
           <section className={styles['order-detail-information-container']}>
-            <section className="scroll-wrapper">
-              <OrderDetailInfo
-                id={`order-detail-${orderId}`}
-                orderItem={getOrderDetailData()}
-              />
-            </section>
+            <OrderDetailInfo
+              id={`order-detail-${orderId}`}
+              orderItem={getOrderDetailData()}
+            />
           </section>
         </BottomModal>
       </section>
