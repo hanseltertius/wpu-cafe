@@ -96,18 +96,6 @@ const OrderList = () => {
       sortField: 'total',
     },
     {
-      name: '',
-      cell: () => null,
-      grow: 0,
-      width: '150px',
-      style: {
-        paddingRight: '150px',
-        margin: 0,
-        backgroundColor: 'transparent',
-      },
-      omit: true,
-    },
-    {
       name: 'Action',
       id: 'action-button',
       width: '150px',
@@ -226,7 +214,7 @@ const OrderList = () => {
   return (
     <main className="layout">
       {isProcessingData && <Loading />}
-      <header className="layout-header">
+      <header className="header">
         <Input
           id="orders-search"
           width="100%"
