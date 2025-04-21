@@ -81,33 +81,35 @@ const AddToCart = (prop: IPropTypes) => {
   };
 
   return (
-    <form id={id} className={styles.form} onSubmit={handleAddToCart}>
-      <div className={styles['form-content']}>
-        <Text id="quantityTitle">Quantity</Text>
-        <div className={styles['quantity-container']}>
-          <Button
-            id="quantity-minus"
-            isIcon
-            onClick={subtractQuantity}
-            iconType={ButtonIconType.MINUS}
-            color={ButtonColor.DANGER}
-            className={styles.small}
-          />
-          <Input
-            id="quantity"
-            type="number"
-            value={quantity.inputValue}
-            width="100%"
-            onChange={setQuantity}
-          />
-          <Button
-            id="quantity-plus"
-            isIcon
-            onClick={addQuantity}
-            iconType={ButtonIconType.PLUS}
-            color={ButtonColor.SUCCESS}
-            className={styles.small}
-          />
+    <form id={id} className="form" onSubmit={handleAddToCart}>
+      <div className={styles.content}>
+        <div className={styles['quantity-content-container']}>
+          <Text id="quantityTitle">Quantity</Text>
+          <div className={styles['quantity-container']}>
+            <Button
+              id="quantity-minus"
+              isIcon
+              onClick={subtractQuantity}
+              iconType={ButtonIconType.MINUS}
+              color={ButtonColor.DANGER}
+              className={styles.small}
+            />
+            <Input
+              id="quantity"
+              type="number"
+              value={quantity.inputValue}
+              width="100%"
+              onChange={setQuantity}
+            />
+            <Button
+              id="quantity-plus"
+              isIcon
+              onClick={addQuantity}
+              iconType={ButtonIconType.PLUS}
+              color={ButtonColor.SUCCESS}
+              className={styles.small}
+            />
+          </div>
         </div>
 
         <Input
@@ -120,16 +122,14 @@ const AddToCart = (prop: IPropTypes) => {
         />
       </div>
 
-      <div className={styles['form-footer']}>
-        <Button
-          id="submit"
-          type="submit"
-          width="100%"
-          color={ButtonColor.SECONDARY}
-        >
-          Add to Cart
-        </Button>
-      </div>
+      <Button
+        id="submit"
+        type="submit"
+        width="100%"
+        color={ButtonColor.SECONDARY}
+      >
+        Add to Cart
+      </Button>
     </form>
   );
 };

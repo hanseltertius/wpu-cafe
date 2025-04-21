@@ -15,7 +15,7 @@ interface IPropTypes {
   cartList: ICart[];
   onCustomerNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onTableNumberChange: (e: ChangeEvent<HTMLSelectElement>) => void;
-  handleEditButton: (id: string) => void;
+  handleEditButton: (id: string, name: string) => void;
   handleCreateOrder: (event: FormEvent) => void;
 }
 
@@ -32,9 +32,9 @@ const CustomerInfo = (props: IPropTypes) => {
   } = props;
 
   return (
-    <form id={id} className={styles.form} onSubmit={handleCreateOrder}>
-      <div className={styles['form-content']}>
-        <div className={styles['customer-info']}>
+    <form id={id} className="form" onSubmit={handleCreateOrder}>
+      <div className="form-container">
+        <div className="content">
           <Input
             id="customerName"
             width="100%"
@@ -53,32 +53,30 @@ const CustomerInfo = (props: IPropTypes) => {
             onChange={onTableNumberChange}
             options={tableNumbers}
           />
-        </div>
-        <div className={styles['cart-scroll-wrapper']}>
-          <div className={styles['cart-container']}>
+          <div className="scroll-wrapper">
             {cartList.length > 0 ? (
-              cartList.map((cart: ICart, index: number) => (
-                <div key={cart.id}>
-                  <Cart cart={cart} handleEditButton={handleEditButton} />
-                </div>
-              ))
-            ) : (
-              <div className={styles['cart-empty-container']}>
-                Your cart is empty
+              <div className={styles['cart-items-container']}>
+                {cartList.map((cart: ICart) => (
+                  <div key={cart.menuItemId}>
+                    <Cart cart={cart} handleEditButton={handleEditButton} />
+                  </div>
+                ))}
               </div>
+            ) : (
+              <div className="empty-container">Your cart is empty</div>
             )}
           </div>
         </div>
-      </div>
-      <div className={styles['form-footer']}>
-        <Button
-          id="submit"
-          type="submit"
-          width="100%"
-          color={ButtonColor.PRIMARY}
-        >
-          Create Order
-        </Button>
+        <div>
+          <Button
+            id="submit"
+            type="submit"
+            width="100%"
+            color={ButtonColor.PRIMARY}
+          >
+            Create Order
+          </Button>
+        </div>
       </div>
     </form>
   );

@@ -70,47 +70,45 @@ const AddToReview = (props: IPropTypes) => {
 
   const rating = useSelectBoxValue('');
 
-  // sementara pake select dulu, baru pake stars
+  // TODO : implement stars
   return (
-    <form id={id} className={styles.form} onSubmit={handleReview}>
-      <div className="form">
-        <div className="form-content">
-          <Input
-            id="reviewerName"
-            label="Reviewer Name"
-            placeholder="Reviewer Name"
-            width="100%"
-            isRequired
-            value={reviewerName.inputValue}
-            onChange={reviewerName.setInputValue}
-          />
-          <Select
-            id="rating"
-            label="Rating"
-            width="100%"
-            options={ratings}
-            value={rating.selectBoxValue}
-            onChange={rating.setSelectBoxValue}
-          />
-          <Input
-            id="comment"
-            label="Comment"
-            placeholder="Add a comment (optional)"
-            width="100%"
-            value={comment.inputValue}
-            onChange={comment.setInputValue}
-          />
-        </div>
-        <div className="form-footer">
-          <Button
-            id="submit"
-            type="submit"
-            width="100%"
-            color={ButtonColor.SECONDARY}
-          >
-            Submit a review
-          </Button>
-        </div>
+    <form id={id} className="form" onSubmit={handleReview}>
+      <div className={styles.content}>
+        <Input
+          id="reviewerName"
+          label="Reviewer Name"
+          placeholder="Reviewer Name"
+          width="100%"
+          isRequired
+          value={reviewerName.inputValue}
+          onChange={reviewerName.setInputValue}
+        />
+        <Select
+          id="rating"
+          label="Rating"
+          width="100%"
+          options={ratings}
+          value={rating.selectBoxValue}
+          onChange={rating.setSelectBoxValue}
+        />
+        <Input
+          id="comment"
+          label="Comment"
+          placeholder="Add a comment (optional)"
+          width="100%"
+          value={comment.inputValue}
+          onChange={comment.setInputValue}
+        />
+      </div>
+      <div className="form-footer">
+        <Button
+          id="submit"
+          type="submit"
+          width="100%"
+          color={ButtonColor.SECONDARY}
+        >
+          Submit a review
+        </Button>
       </div>
     </form>
   );

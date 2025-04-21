@@ -83,8 +83,8 @@ const MenuList = () => {
     },
   });
 
-  const handleEditButton = (id: string) => {
-    handleAddToCart(id);
+  const handleEditButton = (id: string, name: string) => {
+    handleAddToCart(id, name);
   };
 
   const handleCreateOrder = async (event: FormEvent) => {
@@ -129,10 +129,8 @@ const MenuList = () => {
     navigate(`${id}`);
   };
 
-  const handleAddToCart = (id: string) => {
-    const menu = getMenuList().find((i: IMenu) => i.id === id);
-
-    setMenuName(menu.name);
+  const handleAddToCart = (id: string, name: string) => {
+    setMenuName(name);
     setSelectedMenuId(id);
     setIsAddToCartOpen(true);
   };
@@ -146,7 +144,7 @@ const MenuList = () => {
   return (
     <main className="layout">
       {isProcessing && <Loading />}
-      <header className="layout-header">
+      <header className="header">
         <h1>Menu List</h1>
         <Button id="back" onClick={handleBackButton} color={ButtonColor.DANGER}>
           Back
@@ -246,16 +244,18 @@ const MenuList = () => {
       </Popup>
 
       <BottomModal title="Customer Information" height="80vh">
-        <CustomerInfo
-          id="customer-info-non-popup"
-          customerName={customerName.inputValue}
-          tableNumber={tableNumber.selectBoxValue}
-          cartList={cartStore.carts}
-          onCustomerNameChange={customerName.setInputValue}
-          onTableNumberChange={tableNumber.setSelectBoxValue}
-          handleEditButton={handleEditButton}
-          handleCreateOrder={handleCreateOrder}
-        />
+        <div style={{ height: '100%' }}>
+          <CustomerInfo
+            id="customer-info-non-popup"
+            customerName={customerName.inputValue}
+            tableNumber={tableNumber.selectBoxValue}
+            cartList={cartStore.carts}
+            onCustomerNameChange={customerName.setInputValue}
+            onTableNumberChange={tableNumber.setSelectBoxValue}
+            handleEditButton={handleEditButton}
+            handleCreateOrder={handleCreateOrder}
+          />
+        </div>
       </BottomModal>
     </main>
   );

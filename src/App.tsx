@@ -4,17 +4,21 @@ import router from './routes';
 import { ToastContainer } from 'react-toastify';
 import { useEffect } from 'react';
 import useScreenStore from './stores/ScreenStore';
+import useBottomModalStore from './stores/BottomModalStore';
 
 const queryClient = new QueryClient();
 
 function App() {
   const { setIsDesktop } = useScreenStore();
+  const { setIsBottomModalOpen } = useBottomModalStore();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(min-width: 1024px)');
 
     const handleChange = (event: MediaQueryListEvent) => {
-      setIsDesktop(event.matches);
+      const isMatchDesktop = event.matches;
+      setIsDesktop(isMatchDesktop);
+      if (isMatchDesktop) setIsBottomModalOpen(false);
     };
 
     mediaQuery.addEventListener('change', handleChange);
